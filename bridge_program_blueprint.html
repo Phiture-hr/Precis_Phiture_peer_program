@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Bridge Program — Phiture × Precis Peer Learning Exchange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+<style>
+  /* ── Reset & tokens ──────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green:    #28EF8F;
+    --black:    #272525;
+    --white:    #FFFFFF;
+    --blue:     #2FA8FC;
+    --red:      #FC4540;
+    --yellow:   #FABC1C;
+    --carbon:   #646464;
+    --dune:     #F4F3EC;
+    --concrete: #E6E7E8;
+    --font:     'Roboto', Arial, sans-serif;
+    --sidebar:  260px;
+    --content:  820px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--dune);
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.6;
+    display: flex;
+  }
+
+  /* ── Sidebar ─────────────────────────────────────────────────── */
+  .sidebar {
+    width: var(--sidebar);
+    min-height: 100vh;
+    background: var(--black);
+    position: fixed;
+    top: 0; left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    z-index: 100;
+  }
+
+  .sidebar-logo {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-logo .wordmark {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .sidebar-logo .chevron {
+    color: var(--green);
+    margin-right: 4px;
+  }
+
+  .sidebar-logo .sub {
+    font-size: 11px;
+    color: var(--carbon);
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--carbon);
+    padding: 24px 24px 8px;
+  }
+
+  .sidebar nav { flex: 1; overflow-y: auto; }
+
+  .sidebar nav a {
+    display: block;
+    padding: 9px 24px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+    line-height: 1.4;
+  }
+
+  .sidebar nav a:hover,
+  .sidebar nav a.active {
+    color: var(--white);
+    border-left-color: var(--green);
+    background: rgba(40,239,143,0.06);
+  }
+
+  .sidebar nav a .num {
+    color: var(--green);
+    font-weight: 700;
+    margin-right: 6px;
+    font-size: 11px;
+  }
+
+  .sidebar-footer {
+    padding: 20px 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 11px;
+    color: var(--carbon);
+    line-height: 1.5;
+  }
+
+  /* ── Main content ────────────────────────────────────────────── */
+  .main {
+    margin-left: var(--sidebar);
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Hero ────────────────────────────────────────────────────── */
+  .hero {
+    width: 100%;
+    background: var(--black);
+    padding: 72px 64px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--green);
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--green);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+    max-width: 700px;
+  }
+
+  .hero h1 span { color: var(--green); }
+
+  .hero-sub {
+    font-size: 20px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-stat .val {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+  }
+
+  .hero-stat .lbl {
+    font-size: 12px;
+    color: var(--carbon);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Content area ────────────────────────────────────────────── */
+  .content {
+    width: 100%;
+    max-width: var(--content);
+    padding: 56px 64px 80px;
+  }
+
+  /* ── Sections ────────────────────────────────────────────────── */
+  .section { margin-bottom: 72px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--green);
+  }
+
+  .section-num {
+    width: 40px;
+    height: 40px;
+    background: var(--green);
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+
+  .section-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.5px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--black);
+    margin: 28px 0 12px;
+  }
+
+  h3.green { color: var(--green); }
+
+  p {
+    margin-bottom: 16px;
+    color: var(--black);
+    line-height: 1.7;
+  }
+
+  /* ── Callout ─────────────────────────────────────────────────── */
+  .callout {
+    display: flex;
+    margin: 24px 0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .callout-bar {
+    width: 5px;
+    background: var(--green);
+    flex-shrink: 0;
+  }
+
+  .callout-body {
+    background: var(--dune);
+    padding: 16px 20px;
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.65;
+    border-top: 1px solid var(--concrete);
+    border-right: 1px solid var(--concrete);
+    border-bottom: 1px solid var(--concrete);
+  }
+
+  .callout-body strong {
+    color: var(--green);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── Lists ───────────────────────────────────────────────────── */
+  ul.styled, ol.styled {
+    margin: 12px 0 20px 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  ul.styled li, ol.styled li {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--concrete);
+    font-size: 14px;
+    line-height: 1.6;
+    align-items: flex-start;
+  }
+
+  ul.styled li:last-child, ol.styled li:last-child {
+    border-bottom: none;
+  }
+
+  ul.styled li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  ol.styled { counter-reset: item; }
+
+  ol.styled li {
+    counter-increment: item;
+  }
+
+  ol.styled li::before {
+    content: counter(item);
+    width: 24px;
+    height: 24px;
+    background: var(--black);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── Tables ──────────────────────────────────────────────────── */
+  .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 4px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+
+  thead tr {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  tbody tr:nth-child(even) { background: var(--concrete); }
+  tbody tr:nth-child(odd)  { background: var(--white); }
+
+  tbody td {
+    padding: 11px 16px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--concrete);
+    line-height: 1.55;
+  }
+
+  tbody td:first-child { font-weight: 600; color: var(--black); }
+
+  /* ── Model cards ─────────────────────────────────────────────── */
+  .model-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 24px 0;
+  }
+
+  .model-card {
+    background: var(--white);
+    border: 1px solid var(--concrete);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .model-card.recommended {
+    border-color: var(--green);
+    border-width: 2px;
+  }
+
+  .model-card-header {
+    padding: 18px 20px 14px;
+    background: var(--dune);
+    border-bottom: 1px solid var(--concrete);
+    position: relative;
+  }
+
+  .model-card.recommended .model-card-header {
+    background: var(--black);
+  }
+
+  .model-card-badge {
+    display: inline-block;
+    background: var(--green);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+
+  .model-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--black);
+  }
+
+  .model-card.recommended h3 { color: var(--white); }
+
+  .model-card-body { padding: 18px 20px; }
+
+  .model-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--concrete);
+    font-size: 13px;
+    gap: 12px;
+  }
+
+  .model-row:last-child { border-bottom: none; }
+
+  .model-row .mk { color: var(--carbon); font-size: 12px; flex-shrink: 0; }
+  .model-row .mv { font-weight: 600; text-align: right; }
+
+  /* ── Timeline ────────────────────────────────────────────────── */
+  .timeline {
+    position: relative;
+    margin: 24px 0;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--concrete);
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: var(--green);
+    border-radius: 50%;
+    border: 2px solid var(--dune);
+    box-shadow: 0 0 0 2px var(--green);
+  }
+
+  .tl-date {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .tl-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+
+  .tl-desc {
+    font-size: 13px;
+    color: var(--carbon);
+    line-height: 1.55;
+  }
+
+  /* ── Metric cards ────────────────────────────────────────────── */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .metric-card {
+    background: var(--white);
+    border: 1px solid var(--concrete);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .metric-card .target {
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .metric-card .metric-label {
+    font-size: 13px;
+    color: var(--black);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .metric-card .metric-sub {
+    font-size: 11px;
+    color: var(--carbon);
+    line-height: 1.5;
+  }
+
+  /* ── Matching weights ─────────────────────────────────────────── */
+  .weight-bar { margin: 10px 0; }
+
+  .weight-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .weight-label span:first-child { font-weight: 600; }
+  .weight-label span:last-child { color: var(--green); font-weight: 700; }
+
+  .weight-track {
+    height: 8px;
+    background: var(--concrete);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .weight-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+
+  /* ── Application form preview ─────────────────────────────────── */
+  .form-preview {
+    background: var(--white);
+    border: 1px solid var(--concrete);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 24px 0;
+  }
+
+  .form-header {
+    background: var(--black);
+    color: var(--white);
+    padding: 16px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  .form-q {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--concrete);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .form-q:last-child { border-bottom: none; }
+
+  .form-q .qnum {
+    width: 24px;
+    height: 24px;
+    background: var(--green);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .form-q .qtext { font-size: 13.5px; line-height: 1.6; }
+  .form-q .qlimit { font-size: 11px; color: var(--carbon); margin-top: 4px; }
+  .form-q .qtag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── Session structure ────────────────────────────────────────── */
+  .session-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .session-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0;
+    border: 1px solid var(--concrete);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .session-left {
+    background: var(--black);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .session-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .session-leader {
+    font-size: 13px;
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .session-right {
+    background: var(--white);
+    padding: 14px 18px;
+  }
+
+  .session-focus {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+
+  .session-output {
+    font-size: 12px;
+    color: var(--carbon);
+  }
+
+  .session-output strong { color: var(--green); }
+
+  /* ── Quick ref ────────────────────────────────────────────────── */
+  .qr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .qr-item {
+    background: var(--white);
+    border: 1px solid var(--concrete);
+    border-radius: 4px;
+    padding: 14px 16px;
+  }
+
+  .qr-key {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--carbon);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .qr-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  /* ── Divider ─────────────────────────────────────────────────── */
+  hr {
+    border: none;
+    border-top: 1px solid var(--concrete);
+    margin: 40px 0;
+  }
+
+  /* ── Exec summary ────────────────────────────────────────────── */
+  .exec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .exec-card {
+    background: var(--black);
+    border-radius: 6px;
+    padding: 22px;
+    text-align: center;
+  }
+
+  .exec-card .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .exec-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .exec-card p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── Print ───────────────────────────────────────────────────── */
+  @media print {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .hero { padding: 40px 40px 32px; }
+    .content { padding: 32px 40px; }
+  }
+
+  /* ── Responsive ──────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .model-grid, .metric-grid, .exec-grid, .qr-grid { grid-template-columns: 1fr; }
+    .hero { padding: 40px 24px 36px; }
+    .hero h1 { font-size: 36px; }
+    .content { padding: 32px 24px 60px; }
+    .session-item { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── SIDEBAR ─────────────────────────────────────────────────────── -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="wordmark"><span class="chevron">››</span> Phiture</div>
+    <div class="sub">by Precis · People & Culture</div>
+  </div>
+  <div class="sidebar-label">Program Blueprint 2026</div>
+  <nav>
+    <a href="#exec"><span class="num">0</span> Executive Summary</a>
+    <a href="#concept"><span class="num">1</span> Program Concept</a>
+    <a href="#models"><span class="num">2</span> Models & Recommendation</a>
+    <a href="#selection"><span class="num">3</span> Participant Selection</a>
+    <a href="#matching"><span class="num">4</span> Matching Logic</a>
+    <a href="#structure"><span class="num">5</span> Structure & Timeline</a>
+    <a href="#pre-festival"><span class="num">6</span> Pre-Festival Activation</a>
+    <a href="#festival"><span class="num">7</span> Festival Integration</a>
+    <a href="#post"><span class="num">8</span> Post-Program</a>
+    <a href="#comms"><span class="num">9</span> Communication Strategy</a>
+    <a href="#metrics"><span class="num">10</span> Success Metrics</a>
+    <a href="#appendix"><span class="num">A</span> Appendix</a>
+  </nav>
+  <div class="sidebar-footer">
+    Confidential · Internal use only<br>
+    People &amp; Culture · April 2026
+  </div>
+</aside>
+
+<!-- ── MAIN ────────────────────────────────────────────────────────── -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">Program Blueprint · 2026</div>
+    <h1>The <span>Bridge</span><br>Program</h1>
+    <p class="hero-sub">Phiture × Precis Peer Learning Exchange — a structured, cohort-based skill exchange designed to build real cross-company relationships before the September Festival.</p>
+    <div class="hero-meta">
+      <div class="hero-stat"><span class="val">60</span><span class="lbl">Participants</span></div>
+      <div class="hero-stat"><span class="val">30</span><span class="lbl">Pairs</span></div>
+      <div class="hero-stat"><span class="val">12</span><span class="lbl">Weeks</span></div>
+      <div class="hero-stat"><span class="val">5</span><span class="lbl">Sessions / pair</span></div>
+      <div class="hero-stat"><span class="val">Sep</span><span class="lbl">Festival Meetup</span></div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- EXEC SUMMARY -->
+    <section class="section" id="exec">
+      <div class="section-header">
+        <div class="section-num">0</div>
+        <h2>Executive Summary</h2>
+      </div>
+
+      <p>The Bridge Program is a structured, cohort-based peer learning exchange between Phiture and Precis. Running from June to September 2026, it pairs 60 intentionally selected employees — 30 from Phiture, 30 from Precis — in 1:1 cross-company pairings designed to drive real skill transfer, not networking in disguise.</p>
+
+      <div class="exec-grid">
+        <div class="exec-card">
+          <div class="icon">⇄</div>
+          <h4>Bilateral Skill Exchange</h4>
+          <p>Every participant both teaches and learns. No hierarchy. No mentors. Sessions alternate direction.</p>
+        </div>
+        <div class="exec-card">
+          <div class="icon">◎</div>
+          <h4>Meaningful Relationships</h4>
+          <p>60-minute structured sessions over 12 weeks build depth that a networking event never can.</p>
+        </div>
+        <div class="exec-card">
+          <div class="icon">✦</div>
+          <h4>Cultural Integration</h4>
+          <p>Grounded in professional credibility, not forced socialisation. Identity is preserved, not erased.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-bar"></div>
+        <div class="callout-body">
+          <strong>Key milestone</strong>
+          The program culminates at the Precis Festival in September 2026, where all 30 pairs meet in person for the first time — converting months of structured digital collaboration into a real, lasting connection.
+        </div>
+      </div>
+
+      <p>The program is designed to run with minimal ongoing HR involvement after kickoff. It requires one dedicated coordinator (0.2 FTE), simple digital infrastructure, and leadership sponsorship from both companies.</p>
+
+      <div class="qr-grid" style="margin-top:28px;">
+        <div class="qr-item"><div class="qr-key">Format</div><div class="qr-val">1:1 pairs, Phiture × Precis</div></div>
+        <div class="qr-item"><div class="qr-key">Cohort</div><div class="qr-val">30 Phiture + 30 Precis</div></div>
+        <div class="qr-item"><div class="qr-key">Active period</div><div class="qr-val">June – September 2026</div></div>
+        <div class="qr-item"><div class="qr-key">HR dependency</div><div class="qr-val">Low — 0.2 FTE after kickoff</div></div>
+        <div class="qr-item"><div class="qr-key">Sessions / pair</div><div class="qr-val">5 × 60 min (biweekly)</div></div>
+        <div class="qr-item"><div class="qr-key">Cohort 2 decision</div><div class="qr-val">December 2026</div></div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- 1. CONCEPT -->
+    <section class="section" id="concept">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <h2>Program Concept</h2>
+      </div>
+
+      <h3>What it is</h3>
+      <p>The Bridge Program is a 12-week structured peer learning exchange. Participants are paired across company boundaries and commit to a defined cadence of skill-sharing sessions. Each pair produces a reciprocal exchange: Person A teaches Person B something; Person B teaches Person A something. Neither role is senior or junior — both sides contribute equally.</p>
+
+      <div class="callout">
+        <div class="callout-bar"></div>
+        <div class="callout-body">
+          <strong>What this is not</strong>
+          This is not mentoring — there is no mentor and mentee. It is not networking — there are no coffees disguised as development. Every session has a learning objective set in advance and a short reflection logged afterwards.
+        </div>
+      </div>
+
+      <h3>Why it is differentiated</h3>
+      <p>Most cross-company integration efforts fail because they are either too social ("get to know each other" events) or too operational ("align on process" workshops). The Bridge Program is neither. It creates a structured reason to spend recurring, substantive time with someone from the other company — and that reason is learning something specific that you cannot learn inside your own team.</p>
+
+      <p>The post-acquisition context makes this urgent. Phiture employees need to understand how Precis operates at scale. Precis employees need to understand Phiture's craft expertise in mobile growth. Both sides have knowledge the other lacks. The program creates the channel for that exchange to happen deliberately.</p>
+
+      <h3>Design principles</h3>
+      <ul class="styled">
+        <li><strong>Every interaction must have a learning outcome.</strong> If a session cannot be described in terms of what was taught and learned, it does not count as a session.</li>
+        <li><strong>Reciprocal by design.</strong> No hierarchy between participants — both sides teach, both sides learn.</li>
+        <li><strong>Small enough to be intentional.</strong> 60 participants max in Cohort 1. Quality over scale.</li>
+        <li><strong>Anchored to a real in-person moment.</strong> The September Festival gives the programme a climax and a reason to sustain engagement.</li>
+        <li><strong>Self-sustaining after kickoff.</strong> Pairs own their own schedule and agenda — HR is not the engine.</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <!-- 2. MODELS -->
+    <section class="section" id="models">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <h2>Program Models &amp; Recommendation</h2>
+      </div>
+
+      <div class="model-grid">
+        <div class="model-card recommended">
+          <div class="model-card-header">
+            <div class="model-card-badge">✓ Recommended — Cohort 1</div>
+            <h3>Model A — 1:1 Pairs</h3>
+          </div>
+          <div class="model-card-body">
+            <div class="model-row"><span class="mk">Cohort size</span><span class="mv">60 · 30 pairs</span></div>
+            <div class="model-row"><span class="mk">Session length</span><span class="mv">60 min, video</span></div>
+            <div class="model-row"><span class="mk">Sessions / pair</span><span class="mv">5 over 12 weeks</span></div>
+            <div class="model-row"><span class="mk">Cadence</span><span class="mv">Biweekly</span></div>
+            <div class="model-row"><span class="mk">Direction</span><span class="mv">Alternating per session</span></div>
+            <div class="model-row"><span class="mk">HR dependency</span><span class="mv">Low</span></div>
+          </div>
+        </div>
+
+        <div class="model-card">
+          <div class="model-card-header">
+            <div class="model-card-badge" style="background:var(--concrete);color:var(--carbon);">Alternative — Cohort 2</div>
+            <h3>Model B — Learning Triads</h3>
+          </div>
+          <div class="model-card-body">
+            <div class="model-row"><span class="mk">Cohort size</span><span class="mv">60–90 · 20–30 triads</span></div>
+            <div class="model-row"><span class="mk">Session length</span><span class="mv">90 min, video</span></div>
+            <div class="model-row"><span class="mk">Sessions / triad</span><span class="mv">4 over 12 weeks</span></div>
+            <div class="model-row"><span class="mk">Cadence</span><span class="mv">Monthly</span></div>
+            <div class="model-row"><span class="mk">Direction</span><span class="mv">Rotating teaching role</span></div>
+            <div class="model-row"><span class="mk">HR dependency</span><span class="mv">Medium</span></div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Why Model A is recommended for Cohort 1</h3>
+      <ul class="styled">
+        <li><strong>Deeper relationships.</strong> 1:1 conversations go further than group dynamics allow. You cannot be a passive listener in a pair.</li>
+        <li><strong>Simpler to match.</strong> One dimension less than triads — bilateral skill alignment is much easier to optimise with 30 pairs than three-way alignment with 20 triads.</li>
+        <li><strong>Clearer accountability.</strong> When something goes wrong (a pair drifts, sessions stop), there are two people responsible — easy to intervene.</li>
+        <li><strong>Easier to measure.</strong> Impact is attributable to a specific pairing, not a group dynamic.</li>
+        <li><strong>Right for a first cohort.</strong> Prove the model before scaling.</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-bar"></div>
+        <div class="callout-body">
+          <strong>Decision</strong>
+          Launch Cohort 1 as 1:1 pairs. Introduce triads in Cohort 2 (2027) as a complementary track for participants who have already completed a 1:1 cycle and want a group learning format.
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- 3. SELECTION -->
+    <section class="section" id="selection">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <h2>Participant Selection</h2>
+      </div>
+
+      <h3>Cohort size and split</h3>
+      <p>Cohort 1 targets <strong>60 participants: 30 from Phiture (27% of the company) and 30 from Precis (~6%)</strong>. This is intentionally asymmetric — Phiture's full representation matters for cultural integration, while Precis participation must be filtered for relevance and motivation.</p>
+
+      <h3>Eligibility — both companies</h3>
+      <ul class="styled">
+        <li>Minimum 6 months in current role — settled enough to have something to teach</li>
+        <li>No planned parental leave or major leave during June–September</li>
+        <li>Manager approval required — not to gatekeep, but to ensure workload supports the commitment</li>
+        <li>Willing to commit a minimum of 3 hours per month (sessions + prep + reflection)</li>
+      </ul>
+
+      <h3>Eligibility — Precis-specific filter</h3>
+      <p>Not all of Precis can or should participate. The filtering criteria are stricter because Precis employees need a genuine reason to engage with Phiture — not just curiosity.</p>
+      <ul class="styled">
+        <li>Works in a function with strategic overlap with Phiture: Performance, Data, Strategy, Creative, Product, or HR</li>
+        <li>Has expressed interest in mobile app marketing, ASO, or growth marketing in the past 12 months — OR has a cross-sell/upsell relationship with Phiture clients</li>
+        <li>Manager level or above, OR a specialist with 3+ years in their domain</li>
+        <li>Must be nominated by department head or self-select with department head endorsement</li>
+      </ul>
+
+      <h3>Application form — 7 questions</h3>
+      <p>Applications open for 2 weeks via a Google Form or Typeform. Estimated completion time: 15–20 minutes.</p>
+
+      <div class="form-preview">
+        <div class="form-header">The Bridge Program — Application Form · May 2026</div>
+
+        <div class="form-q">
+          <div class="qnum">1</div>
+          <div>
+            <div class="qtext">What is one specific skill you could teach someone from the other company? Name it precisely and explain how you have used it in the past 6 months.</div>
+            <div class="qlimit">Max 150 words · Required</div>
+          </div>
+        </div>
+
+        <div class="form-q">
+          <div class="qnum">2</div>
+          <div>
+            <div class="qtext">What is one skill gap you want to close in the next 6 months? Describe why you have not been able to address it internally.</div>
+            <div class="qlimit">Max 100 words · Required</div>
+          </div>
+        </div>
+
+        <div class="form-q">
+          <div class="qnum">3</div>
+          <div>
+            <div class="qtext">Describe a time you learned something significant from someone with a very different professional background to yours. What made that exchange work?</div>
+            <div class="qlimit">Max 150 words · Required</div>
+          </div>
+        </div>
+
+        <div class="form-q">
+          <div class="qnum">4</div>
+          <div>
+            <div class="qtext">How does your current role connect to the integration between Phiture and Precis — even if indirectly?</div>
+            <div class="qlimit">Max 75 words · Required</div>
+          </div>
+        </div>
+
+        <div class="form-q">
+          <div class="qnum">5</div>
+          <div>
+            <div class="qtext">What do you want to understand better about how the other company operates — beyond what you have heard in company-wide communications?</div>
+            <div class="qlimit">Max 100 words · Required</div>
+          </div>
+        </div>
+
+        <div class="form-q">
+          <div class="qnum">6</div>
+          <div>
+            <div class="qtext">How many hours per month can you realistically commit to this program?</div>
+            <div class="qlimit">Select: 3h / 4h / 5h / 6h+ · Required</div>
+          </div>
+        </div>
+
+        <div class="form-q">
+          <div class="qnum">7</div>
+          <div>
+            <div class="qtext">What draws you to learning from or with someone at Phiture specifically, rather than with peers within Precis? <span class="qtag">Precis applicants only</span></div>
+            <div class="qlimit">Max 100 words · Required for Precis</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Selection scoring</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Criterion</th><th>Weight</th><th>How it is assessed</th></tr></thead>
+          <tbody>
+            <tr><td>Clarity and specificity of skill to teach</td><td>30%</td><td>Q1 — does the applicant name a real, teachable skill? Reject if vague (e.g. "communication").</td></tr>
+            <tr><td>Genuine learning motivation</td><td>25%</td><td>Q2 + Q5 — is the gap real and not addressable internally?</td></tr>
+            <tr><td>Cross-company integration relevance</td><td>25%</td><td>Q4 + Q7 (Precis) — does the role or interest actually bridge both companies?</td></tr>
+            <tr><td>Reciprocal mindset</td><td>20%</td><td>Q3 — evidence of peer learning experience; not mentoring-only mindset.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <div class="callout-bar"></div>
+        <div class="callout-body">
+          <strong>Automatic rejection criteria</strong>
+          Applications should be rejected if: the skill named in Q1 is too vague to teach in 45 minutes; the applicant cannot articulate a specific learning goal; or (for Precis) the role has no functional overlap with Phiture's work.
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- 4. MATCHING -->
+    <section class="section" id="matching">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <h2>Matching Logic</h2>
+      </div>
+
+      <h3>Input data — Matching Profile</h3>
+      <p>After selection, each participant completes a short Matching Profile (5 fields, in a form):</p>
+      <ul class="styled">
+        <li><strong>Primary skill to teach</strong> — one sentence, specific (e.g. "App Store Optimisation keyword strategy", not "marketing")</li>
+        <li><strong>Primary skill to learn</strong> — one sentence, specific</li>
+        <li><strong>Secondary skill to teach</strong> — optional but encouraged</li>
+        <li><strong>Domain / function</strong> — team and area of work</li>
+        <li><strong>Preferred working style</strong> — async-heavy / sync-heavy; structured / exploratory</li>
+      </ul>
+
+      <h3>Matching criteria and weights</h3>
+
+      <div class="weight-bar">
+        <div class="weight-label"><span>Skill alignment — A teaches B</span><span>40%</span></div>
+        <div class="weight-track"><div class="weight-fill" style="width:40%"></div></div>
+      </div>
+      <div class="weight-bar">
+        <div class="weight-label"><span>Skill alignment — B teaches A (bidirectional quality)</span><span>30%</span></div>
+        <div class="weight-track"><div class="weight-fill" style="width:30%"></div></div>
+      </div>
+      <div class="weight-bar">
+        <div class="weight-label"><span>Cross-company &amp; functional diversity</span><span>30%</span></div>
+        <div class="weight-track"><div class="weight-fill" style="width:30%"></div></div>
+      </div>
+
+      <p style="font-size:13px;color:var(--carbon);margin-top:8px;margin-bottom:24px;">Each criterion is scored 0–5. The weighted total produces a match score out of 5.0. The coordinator reviews the top 3 candidates per person and makes the final call manually.</p>
+
+      <h3>Manual override criteria</h3>
+      <ul class="styled">
+        <li><strong>Seniority balance.</strong> Avoid very senior Precis + very junior Phiture (or vice versa) — it recreates a mentoring dynamic.</li>
+        <li><strong>Client overlap.</strong> If A and B already interact on the same client account, choose a different pair.</li>
+        <li><strong>Working style fit.</strong> If one is async-heavy and one is sync-heavy, flag but do not automatically reject — note it in the welcome message.</li>
+      </ul>
+
+      <h3>Score interpretation</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Score</th><th>Interpretation</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>4.0 – 5.0</td><td>Excellent match</td><td>Confirm pair</td></tr>
+            <tr><td>3.0 – 3.9</td><td>Good match — one criterion weaker</td><td>Confirm; note the weaker criterion in welcome pack</td></tr>
+            <tr><td>2.0 – 2.9</td><td>Marginal</td><td>Confirm only if no better option; flag for Week 4 check-in</td></tr>
+            <tr><td>Below 2.0</td><td>Poor match</td><td>Do not pair — return to pool or use waitlist candidate</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <div class="callout-bar"></div>
+        <div class="callout-body">
+          <strong>Quality threshold</strong>
+          90% of pairs should score ≥3.0 out of 5.0. No pair should be made if the primary skill match score (criterion 1 alone) is below 2.0 — the core exchange has to work.
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- 5. STRUCTURE -->
+    <section class="section" id="structure">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <h2>Program Structure &amp; Timeline</h2>
+      </div>
+
+      <h3>Master timeline — working backwards from September</h3>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">15 – 30 Apr</div>
+          <div class="tl-title">Design &amp; sign-off</div>
+          <div class="tl-desc">Finalise blueprint. Secure leadership sponsorship from both companies. Confirm Festival date. Assign coordinator.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">1 – 14 May</div>
+          <div class="tl-title">Applications open</div>
+          <div class="tl-desc">Launch application form. Cascade to Precis via department heads. Manager briefing sent. All-hands mention at Phiture.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">15 – 31 May</div>
+          <div class="tl-title">Selection &amp; decisions</div>
+          <div class="tl-desc">Panel reviews applications against scoring criteria. Accepted and rejected applicants notified. Waitlist maintained.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">1 – 15 Jun</div>
+          <div class="tl-title">Matching &amp; onboarding</div>
+          <div class="tl-desc">Matching profiles collected. Scoring matrix built. Pairs confirmed. Welcome packs sent. Orientation session scheduled.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">16 Jun</div>
+          <div class="tl-title">Kickoff orientation</div>
+          <div class="tl-desc">90-min virtual session — all 60 participants. Program overview, pairs meet for the first time, session templates shared, questions answered.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">17 Jun – 17 Jul</div>
+          <div class="tl-title">Active phase — Weeks 1–4</div>
+          <div class="tl-desc">Sessions 1 &amp; 2 per pair. Coordinator sends a Week 4 check-in email (3 questions, 5-min reply).</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">18 Jul – 25 Aug</div>
+          <div class="tl-title">Active phase — Weeks 5–10</div>
+          <div class="tl-desc">Sessions 3, 4 &amp; 5. Mid-program pulse survey at Week 7. Coordinator flags any pairs with no sessions logged.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">1 – 7 Sep</div>
+          <div class="tl-title">Pre-Festival activation</div>
+          <div class="tl-desc">Pairs complete joint 1-page brief (see Section 6). Coordinator collects submissions. Festival logistics shared.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">September (TBC)</div>
+          <div class="tl-title">Precis Festival</div>
+          <div class="tl-desc">In-person meetup. 3 structured Bridge Program touchpoints within festival agenda (see Section 7).</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Oct – Dec</div>
+          <div class="tl-title">Post-program &amp; alumni</div>
+          <div class="tl-desc">Alumni Slack channel. Monthly prompts. Alumni Hour in November. Cohort 2 EOI form in December.</div>
+        </div>
+      </div>
+
+      <h3>Session structure per pair — 5 sessions</h3>
+
+      <div class="session-grid">
+        <div class="session-item">
+          <div class="session-left">
+            <div class="session-num">Session 1 · Weeks 1–2</div>
+            <div class="session-leader">Phiture leads</div>
+          </div>
+          <div class="session-right">
+            <div class="session-focus">Teaching session — 45 min input + 15 min Q&A</div>
+            <div class="session-output"><strong>Output:</strong> Precis participant writes a 3-sentence learning log</div>
+          </div>
+        </div>
+        <div class="session-item">
+          <div class="session-left">
+            <div class="session-num">Session 2 · Weeks 3–4</div>
+            <div class="session-leader">Precis leads</div>
+          </div>
+          <div class="session-right">
+            <div class="session-focus">Teaching session — 45 min input + 15 min Q&A</div>
+            <div class="session-output"><strong>Output:</strong> Phiture participant writes a 3-sentence learning log</div>
+          </div>
+        </div>
+        <div class="session-item">
+          <div class="session-left">
+            <div class="session-num">Session 3 · Weeks 6–7</div>
+            <div class="session-leader">Phiture leads</div>
+          </div>
+          <div class="session-right">
+            <div class="session-focus">Applied session — Precis brings a real problem; Phiture helps solve it</div>
+            <div class="session-output"><strong>Output:</strong> Joint note on the applied case (kept by both)</div>
+          </div>
+        </div>
+        <div class="session-item">
+          <div class="session-left">
+            <div class="session-num">Session 4 · Weeks 8–9</div>
+            <div class="session-leader">Precis leads</div>
+          </div>
+          <div class="session-right">
+            <div class="session-focus">Applied session — Phiture brings a real problem; Precis helps solve it</div>
+            <div class="session-output"><strong>Output:</strong> Joint note on the applied case (kept by both)</div>
+          </div>
+        </div>
+        <div class="session-item">
+          <div class="session-left">
+            <div class="session-num">Session 5 · Weeks 11–12</div>
+            <div class="session-leader">Both · Retrospective</div>
+          </div>
+          <div class="session-right">
+            <div class="session-focus">What each learned · What they'd do differently · One thing to take back to their team</div>
+            <div class="session-output"><strong>Output:</strong> Joint 1-page summary submitted to coordinator</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- 6. PRE-FESTIVAL -->
+    <section class="section" id="pre-festival">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <h2>Pre-Festival Activation</h2>
+      </div>
+
+      <p>The week before the Festival (1–7 September), each pair completes one joint activation task. This creates a concrete shared artefact the pair can reference when they meet in person — and ideally share with their teams afterwards.</p>
+
+      <h3>The joint task: a 1-page knowledge transfer brief</h3>
+      <p>Each pair co-authors a single document (1 page, any format) structured around three prompts:</p>
+      <ol class="styled">
+        <li><strong>What I learned from my partner</strong> — 3 bullet points maximum, specific and applied. Not "I learned about ASO" but "I learned how to use search tab impression share to identify ranking ceilings."</li>
+        <li><strong>How I have or plan to use it</strong> — one concrete example from their own work or client context.</li>
+        <li><strong>One question I still have</strong> — something they hope the in-person conversation will answer or take further.</li>
+      </ol>
+
+      <div class="callout">
+        <div class="callout-bar"></div>
+        <div class="callout-body">
+          <strong>Why this matters</strong>
+          Pairs who complete the pre-Festival brief arrive at the Festival with something specific to talk about — not "so, how has it been going?" but "I've been thinking about that question I still had, and I wanted to ask you about X." It converts awkwardness into momentum.
+        </div>
+      </div>
+
+      <p>The coordinator sends a lightweight template the first week of September. Pairs have 5 working days to complete it. The document is not for publication — it is the pair's personal artefact and conversation starter.</p>
+    </section>
+
+    <hr>
+
+    <!-- 7. FESTIVAL -->
+    <section class="section" id="festival">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <h2>In-Person Festival Integration</h2>
+      </div>
+
+      <p>The Festival is the first time pairs meet in person. This moment needs to feel earned. The Bridge Program should have a distinct, identifiable presence within the Festival agenda — without consuming too much space or feeling like a separate track imposed on the event.</p>
+
+      <h3 class="green">Touchpoint 1 — The Bridge Table (Day 1, Evening Social)</h3>
+      <p>During the opening social, all 60 Bridge participants are seated at "Bridge Tables" — tables of 8–10 where at least 4 pairs are represented. No structured agenda. The coordinator places a simple card on each table with one prompt: <em>"Tell your table what your partner taught you — in one sentence."</em> This prompts organic conversation without forcing a format.</p>
+
+      <h3 class="green">Touchpoint 2 — The Bridge Showcase (Day 2, 30-min slot)</h3>
+      <p>3–4 pairs are invited (voluntarily) to give a 5-minute joint showcase of what they learned from each other. Format: one slide or whiteboard, no formal presentation required. Pairs are selected by the coordinator based on the quality of their Session 5 summaries. The showcase is visible to the full Festival audience — it signals what the programme achieved to people who were not part of it.</p>
+
+      <h3 class="green">Touchpoint 3 — The Next Step card (Day 2 or 3)</h3>
+      <p>Each pair receives a prompt card asking them to agree one thing they will do together after the Festival. Examples: share a relevant internal document, introduce each other to one colleague, do one optional additional session. The coordinator collects these commitments digitally on Day 3. This creates a lightweight accountability moment without overcommitting anyone.</p>
+
+      <h3>What to avoid</h3>
+      <ul class="styled">
+        <li>Do not run a formal Bridge Program breakout session that excludes non-participants — it signals exclusivity in a negative way</li>
+        <li>Do not require participants to present or share publicly — the showcase must be entirely voluntary</li>
+        <li>Do not use the Festival moment to evaluate the programme — it is a celebration, not a review</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <!-- 8. POST-PROGRAM -->
+    <section class="section" id="post">
+      <div class="section-header">
+        <div class="section-num">8</div>
+        <h2>Post-Program Continuation</h2>
+      </div>
+
+      <h3>Alumni track — October to December</h3>
+      <ul class="styled">
+        <li>All 60 participants join a dedicated Slack channel: <strong>#bridge-alumni</strong></li>
+        <li>Coordinator posts one prompt per month — a question or challenge to spark cross-company knowledge sharing (e.g. "What is one thing your pair taught you that you have now taught someone else on your team?")</li>
+        <li>One optional "Alumni Hour" virtual session in November — open format, no agenda except reconnection and peer sharing</li>
+        <li>Pairs who want to continue meeting 1:1 are encouraged but not tracked — at this point it becomes self-sustaining</li>
+      </ul>
+
+      <h3>Cohort 2 pipeline</h3>
+      <p>In December, the coordinator launches a brief expression-of-interest form for Cohort 2 (targeting Q1 2027). Alumni from Cohort 1 are invited to become peer ambassadors — they help promote the programme internally and can optionally be matched with a new participant as a companion (not a re-run of the full programme).</p>
+
+      <h3>Institutional knowledge capture</h3>
+      <p>The Session 5 joint summaries, pre-Festival briefs, and end-of-program survey data are compiled into a one-page <strong>Cohort 1 Impact Report</strong>. This is shared with leadership from both companies and is the primary input for deciding whether to run Cohort 2 and whether to scale to 90 participants.</p>
+    </section>
+
+    <hr>
+
+    <!-- 9. COMMS -->
+    <section class="section" id="comms">
+      <div class="section-header">
+        <div class="section-num">9</div>
+        <h2>Communication Strategy</h2>
+      </div>
+
+      <div class="callout">
+        <div class="callout-bar"></div>
+        <div class="callout-body">
+          <strong>Positioning principle</strong>
+          Do not position this as an HR initiative or a diversity exercise. Position it as a professional development opportunity with competitive value — you learn something specific that makes you better at your job. Headline: "Build a skill. Build a relationship. Build the company."
+        </div>
+      </div>
+
+      <h3>Key messages by audience</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Audience</th><th>Core message</th><th>Channel</th></tr></thead>
+          <tbody>
+            <tr><td>All Phiture employees</td><td>"The Bridge Program is your chance to learn something from Precis — and teach something back. Applications open 1 May."</td><td>All Hands + Slack #general</td></tr>
+            <tr><td>Phiture managers</td><td>"We're asking your team members to invest 3h/month. Here's what they'll get out of it — and what you'll get back."</td><td>Manager briefing email from People team</td></tr>
+            <tr><td>Precis leadership</td><td>"We're selectively inviting 30 Precis employees to a structured peer exchange with Phiture. Nominations open 1 May."</td><td>Email from Precis People / Integration lead</td></tr>
+            <tr><td>Selected participants</td><td>"You're in. Here's exactly what happens next, when, and what we need from you."</td><td>Personal welcome email + onboarding pack</td></tr>
+            <tr><td>Rejected applicants</td><td>"Thank you for applying. We had more applicants than places. Here's what you can do in the meantime."</td><td>Personal email from coordinator</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Communication calendar</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Date</th><th>Action</th><th>Owner</th></tr></thead>
+          <tbody>
+            <tr><td>28 Apr</td><td>Manager briefing email sent (Phiture)</td><td>People team</td></tr>
+            <tr><td>1 May</td><td>Applications open — launch email to all Phiture + Precis cascade</td><td>Coordinator</td></tr>
+            <tr><td>5 May</td><td>One reminder via Slack #general</td><td>Coordinator</td></tr>
+            <tr><td>14 May</td><td>Applications close</td><td>Coordinator</td></tr>
+            <tr><td>31 May</td><td>Selection decisions communicated — accepted + rejected</td><td>Coordinator</td></tr>
+            <tr><td>10 Jun</td><td>Welcome pack sent to all 60 participants</td><td>Coordinator</td></tr>
+            <tr><td>16 Jun</td><td>Kickoff orientation session</td><td>Coordinator</td></tr>
+            <tr><td>1 Sep</td><td>Pre-Festival brief template sent to all pairs</td><td>Coordinator</td></tr>
+            <tr><td>Post-Festival</td><td>Cohort 1 Impact Report shared with leadership</td><td>Coordinator</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>What to avoid in all communications</h3>
+      <ul class="styled">
+        <li>Do not use the word "mentoring" — it creates the wrong mental model</li>
+        <li>Do not frame it as a culture initiative — lead with professional development and skill</li>
+        <li>Do not over-promise ("transform your career") — be specific about what the programme delivers</li>
+        <li>Send maximum one reminder per phase — respect people's attention</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <!-- 10. METRICS -->
+    <section class="section" id="metrics">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <h2>Success Metrics</h2>
+      </div>
+
+      <p>Metrics are collected at three points: Week 4 check-in (leading indicators), Week 12 end-of-program survey (outcome metrics), and December alumni survey (lagging indicators). All data is anonymous except where participants opt in to be quoted.</p>
+
+      <h3>Participation — are people showing up?</h3>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="target">≥80%</div>
+          <div class="metric-label">Session completion rate</div>
+          <div class="metric-sub">% of pairs completing all 5 sessions</div>
+        </div>
+        <div class="metric-card">
+          <div class="target">≥85%</div>
+          <div class="metric-label">Programme completion</div>
+          <div class="metric-sub">% of selected participants who finish</div>
+        </div>
+        <div class="metric-card">
+          <div class="target">≥90%</div>
+          <div class="metric-label">Pre-Festival brief</div>
+          <div class="metric-sub">% of active pairs submitting their joint brief</div>
+        </div>
+      </div>
+
+      <h3>Learning — did real learning happen?</h3>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="target">≥75%</div>
+          <div class="metric-label">Specific skill gained</div>
+          <div class="metric-sub">Can describe one thing they know how to do that they didn't before</div>
+        </div>
+        <div class="metric-card">
+          <div class="target">≥60%</div>
+          <div class="metric-label">Applied in their role</div>
+          <div class="metric-sub">Learning applied in current work within 3 months</div>
+        </div>
+        <div class="metric-card">
+          <div class="target">≥50%</div>
+          <div class="metric-label">Manager-noticed change</div>
+          <div class="metric-sub">Manager observed a skill or perspective shift</div>
+        </div>
+      </div>
+
+      <h3>Relationships — real working connections?</h3>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="target">≥85%</div>
+          <div class="metric-label">Genuine professional contact</div>
+          <div class="metric-sub">Describe their pair as a real professional relationship</div>
+        </div>
+        <div class="metric-card">
+          <div class="target">≥60%</div>
+          <div class="metric-label">Still in contact at 3 months</div>
+          <div class="metric-sub">Post-programme relationship still active</div>
+        </div>
+        <div class="metric-card">
+          <div class="target">≥40%</div>
+          <div class="metric-label">Cross-introduction made</div>
+          <div class="metric-sub">Introduced their pair to at least one other colleague</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-bar"></div>
+        <div class="callout-body">
+          <strong>Cohort 2 decision rule</strong>
+          Run Cohort 2 if: session completion rate ≥80% AND ≥75% report a specific skill gained. Scale from 60 to 90 participants if both thresholds are met. If either threshold is missed, redesign before scaling — do not simply repeat Cohort 1.
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- APPENDIX -->
+    <section class="section" id="appendix">
+      <div class="section-header">
+        <div class="section-num">A</div>
+        <h2>Appendix — Resources &amp; Quick Reference</h2>
+      </div>
+
+      <h3>Resources needed to run the program</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Resource</th><th>Specification</th><th>Owner</th></tr></thead>
+          <tbody>
+            <tr><td>Coordinator</td><td>0.2 FTE from People team — primarily active May–September</td><td>Phiture People team</td></tr>
+            <tr><td>Application form</td><td>Google Form or Typeform — 7 questions</td><td>Coordinator</td></tr>
+            <tr><td>Matching matrix</td><td>Google Sheets scoring template</td><td>Coordinator</td></tr>
+            <tr><td>Session template</td><td>Shared Google Doc per pair — agenda + reflection fields</td><td>Coordinator creates; pairs own</td></tr>
+            <tr><td>Slack channels</td><td>#bridge-2026 (active) and #bridge-alumni (post-program)</td><td>Coordinator</td></tr>
+            <tr><td>Leadership sponsors</td><td>One senior sponsor per company to champion publicly</td><td>Phiture CPO/CEO + Precis integration lead</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:32px;">What makes this programme succeed or fail</h3>
+      <div class="model-grid">
+        <div class="model-card recommended" style="border-color:var(--green)">
+          <div class="model-card-header" style="background:var(--black);">
+            <div class="model-card-badge">Success factors</div>
+            <h3 style="color:var(--white)">What drives it</h3>
+          </div>
+          <div class="model-card-body">
+            <ul class="styled">
+              <li>Intentional selection — every participant has a real reason to be there</li>
+              <li>Specific matching — pairs are made because the skills actually align</li>
+              <li>Structured sessions — a clear format prevents sessions from drifting to catch-up calls</li>
+              <li>Leadership visibility — sponsors name the programme publicly at All Hands</li>
+              <li>The Festival — gives pairs a deadline and a shared goal</li>
+            </ul>
+          </div>
+        </div>
+        <div class="model-card">
+          <div class="model-card-header">
+            <div class="model-card-badge" style="background:var(--red);color:var(--white);">Risk factors</div>
+            <h3>What kills it</h3>
+          </div>
+          <div class="model-card-body">
+            <ul class="styled">
+              <li>Open applications — quality collapses if anyone can join</li>
+              <li>Vague session design — without structure, pairs run out of things to say by Session 3</li>
+              <li>No coordinator follow-up — pairs who miss Session 1 rarely catch up</li>
+              <li>Framing it as networking — participants disengage when it feels like HR box-ticking</li>
+              <li>Scaling too fast — Cohort 1 must work before Cohort 2 is launched</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div style="margin-top:48px;padding-top:24px;border-top:2px solid var(--green);display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;">
+      <div>
+        <span style="font-size:20px;font-weight:900;color:var(--black);">›› Phiture</span>
+        <span style="font-size:13px;color:var(--carbon);margin-left:8px;">by Precis</span>
+      </div>
+      <div style="font-size:12px;color:var(--carbon);text-align:right;">
+        People &amp; Culture · The Bridge Program · April 2026<br>
+        Confidential — internal use only
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</main>
+
+<script>
+  // Active sidebar link on scroll
+  const links = document.querySelectorAll('.sidebar nav a');
+  const sections = document.querySelectorAll('.section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const id = entry.target.id;
+        const active = document.querySelector(`.sidebar nav a[href="#${id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
