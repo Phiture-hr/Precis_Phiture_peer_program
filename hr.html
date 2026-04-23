@@ -10,7 +10,7 @@
 :root{
   --green:#28EF8F;--ph-black:#272525;--pr-navy:#1A2744;--pr-mid:#2C3E6B;
   --white:#FFFFFF;--carbon:#646464;--dune:#F4F3EC;--slate:#EDF0F7;--concrete:#E6E7E8;
-  --red:#E53935;--pr-light:#ECF0FB;--pr-pale:#F5F7FD;--amber:#F59E0B;--green-soft:#D4FCE9;
+  --red:#E53935;--pr-light:#ECF0FB;--pr-pale:#F5F7FD;--amber:#F59E0B;--green-soft:#D4FCE9;--sky:#CFEFFF;
   --font:'Roboto',Arial,sans-serif;--sidebar-w:260px;--nav-h:56px;
 }
 html{scroll-behavior:smooth}
@@ -43,17 +43,17 @@ body{font-family:var(--font);background:var(--dune);color:var(--ph-black);font-s
 .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;font-weight:500;padding:6px 14px;border-radius:4px;transition:all .15s}
 .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.08)}
 .nav-links a.active{color:var(--ph-black);background:var(--green)}
-.nav-apply{background:var(--green)!important;color:var(--ph-black)!important;font-weight:700!important}
+.nav-apply{background:var(--sky)!important;color:var(--ph-black)!important;font-weight:700!important;font-size:14px!important;padding:8px 18px!important}
 .nav-badge{font-size:10px;background:rgba(40,239,143,.15);color:var(--green);border:1px solid rgba(40,239,143,.3);padding:2px 7px;border-radius:10px;margin-left:4px}
 
 /* ── LAYOUT ── */
 .page-body{display:flex;margin-top:var(--nav-h)}
-.sidebar{width:var(--sidebar-w);min-height:calc(100vh - var(--nav-h));background:var(--pr-navy);position:fixed;top:var(--nav-h);left:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
-.sidebar-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:20px 22px 8px}
-.sidebar nav a{display:flex;align-items:flex-start;gap:10px;padding:9px 22px;color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent;line-height:1.4}
-.sidebar nav a:hover,.sidebar nav a.active{color:var(--white);border-left-color:var(--green);background:rgba(40,239,143,0.07)}
-.sidebar nav a .num{color:var(--green);font-weight:700;font-size:10px;width:16px;flex-shrink:0;margin-top:2px}
-.sidebar-footer{padding:16px 22px;border-top:1px solid rgba(255,255,255,0.08);font-size:11px;color:rgba(255,255,255,0.25);margin-top:auto}
+.sidebar{width:var(--sidebar-w);min-height:calc(100vh - var(--nav-h));background:var(--sky);position:fixed;top:var(--nav-h);left:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto;border-right:1px solid #b8ddf1}
+.sidebar-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--pr-navy);padding:20px 22px 8px}
+.sidebar nav a{display:flex;align-items:flex-start;gap:10px;padding:9px 22px;color:var(--pr-navy);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent;line-height:1.4}
+.sidebar nav a:hover,.sidebar nav a.active{color:var(--ph-black);border-left-color:var(--pr-mid);background:rgba(255,255,255,0.55)}
+.sidebar nav a .num{color:var(--ph-black);font-weight:700;font-size:10px;width:16px;flex-shrink:0;margin-top:2px}
+.sidebar-footer{padding:16px 22px;border-top:1px solid #b8ddf1;font-size:11px;color:var(--pr-mid);margin-top:auto}
 .main{margin-left:var(--sidebar-w);flex:1;display:flex;flex-direction:column;align-items:center}
 
 /* ── HERO ── */
@@ -862,7 +862,7 @@ function initScrollSpy(){
 :root{
   --green:#28EF8F;--ph-black:#272525;--pr-navy:#1A2744;--pr-mid:#2C3E6B;
   --white:#FFFFFF;--carbon:#646464;--dune:#F4F3EC;--slate:#EDF0F7;--concrete:#E6E7E8;
-  --red:#E53935;--amber:#F59E0B;--green-soft:#D4FCE9;
+  --red:#E53935;--amber:#F59E0B;--green-soft:#D4FCE9;--sky:#CFEFFF;
   --font:'Roboto',Arial,sans-serif;--sidebar-w:260px;--nav-h:56px;
 }
 html{scroll-behavior:smooth}
@@ -895,17 +895,17 @@ body{font-family:var(--font);background:var(--dune);color:var(--ph-black);font-s
 .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;font-weight:500;padding:6px 14px;border-radius:4px;transition:all .15s}
 .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.08)}
 .nav-links a.active{color:var(--ph-black);background:var(--green)}
-.nav-apply{background:var(--green)!important;color:var(--ph-black)!important;font-weight:700!important}
+.nav-apply{background:var(--sky)!important;color:var(--ph-black)!important;font-weight:700!important;font-size:14px!important;padding:8px 18px!important}
 .nav-badge{font-size:10px;background:rgba(40,239,143,.15);color:var(--green);border:1px solid rgba(40,239,143,.3);padding:2px 7px;border-radius:10px;margin-left:4px}
 
 /* ── LAYOUT ── */
 .page-body{display:flex;margin-top:var(--nav-h)}
-.sidebar{width:var(--sidebar-w);min-height:calc(100vh - var(--nav-h));background:var(--pr-navy);position:fixed;top:var(--nav-h);left:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
-.sidebar-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:20px 22px 8px}
-.sidebar nav a{display:flex;align-items:flex-start;gap:10px;padding:9px 22px;color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent;line-height:1.4}
-.sidebar nav a:hover,.sidebar nav a.active{color:var(--white);border-left-color:var(--green);background:rgba(40,239,143,0.07)}
-.sidebar nav a .num{color:var(--green);font-weight:700;font-size:10px;width:16px;flex-shrink:0;margin-top:2px}
-.sidebar-footer{padding:16px 22px;border-top:1px solid rgba(255,255,255,0.08);font-size:11px;color:rgba(255,255,255,0.25);margin-top:auto}
+.sidebar{width:var(--sidebar-w);min-height:calc(100vh - var(--nav-h));background:var(--sky);position:fixed;top:var(--nav-h);left:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto;border-right:1px solid #b8ddf1}
+.sidebar-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--pr-navy);padding:20px 22px 8px}
+.sidebar nav a{display:flex;align-items:flex-start;gap:10px;padding:9px 22px;color:var(--pr-navy);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent;line-height:1.4}
+.sidebar nav a:hover,.sidebar nav a.active{color:var(--ph-black);border-left-color:var(--pr-mid);background:rgba(255,255,255,0.55)}
+.sidebar nav a .num{color:var(--ph-black);font-weight:700;font-size:10px;width:16px;flex-shrink:0;margin-top:2px}
+.sidebar-footer{padding:16px 22px;border-top:1px solid #b8ddf1;font-size:11px;color:var(--pr-mid);margin-top:auto}
 .main{margin-left:var(--sidebar-w);flex:1;display:flex;flex-direction:column;align-items:center}
 
 /* ── HERO ── */

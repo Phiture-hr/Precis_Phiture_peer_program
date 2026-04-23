@@ -10,7 +10,7 @@
 :root{
   --green:#28EF8F;--ph-black:#272525;--pr-navy:#1A2744;--pr-mid:#2C3E6B;
   --white:#FFFFFF;--carbon:#646464;--dune:#F4F3EC;--slate:#EDF0F7;--concrete:#E6E7E8;
-  --red:#E53935;--amber:#F59E0B;--pr-light:#ECF0FB;--pr-pale:#F5F7FD;
+  --red:#E53935;--amber:#F59E0B;--pr-light:#ECF0FB;--pr-pale:#F5F7FD;--sky:#CFEFFF;
   --font:'Roboto',Arial,sans-serif;--nav-h:56px;
 }
 html{scroll-behavior:smooth}
@@ -25,7 +25,8 @@ body{font-family:var(--font);background:var(--dune);color:var(--ph-black);font-s
 .nav-links{display:flex;gap:6px;align-items:center}
 .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;font-weight:500;padding:6px 14px;border-radius:4px;transition:all .15s}
 .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.08)}
-.nav-links a.active{color:var(--ph-black);background:var(--green)}
+.nav-links a.active{color:var(--ph-black);background:var(--sky)}
+.nav-apply{background:var(--sky)!important;color:var(--ph-black)!important;font-weight:700!important;font-size:14px!important;padding:8px 18px!important}
 
 /* ── PAGE LAYOUT ── */
 .page-wrap{margin-top:var(--nav-h);display:flex;justify-content:center;padding:48px 24px 80px}
@@ -155,7 +156,7 @@ input.error,select.error,textarea.error{border-color:var(--red)}
   </div>
   <div class="nav-links">
     <a href="index.html">Overview</a>
-    <a href="apply.html" class="active">Apply now</a>
+    <a href="apply.html" class="active nav-apply">Apply now</a>
   </div>
 </nav>
 
