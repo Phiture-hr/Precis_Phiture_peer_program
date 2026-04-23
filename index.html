@@ -10,7 +10,7 @@
 :root{
   --green:#28EF8F;--ph-black:#272525;--pr-navy:#1A2744;--pr-mid:#2C3E6B;
   --white:#FFFFFF;--carbon:#646464;--dune:#F4F3EC;--slate:#EDF0F7;--concrete:#E6E7E8;
-  --pr-light:#ECF0FB;--pr-pale:#F5F7FD;--sky:#CFEFFF;--sky-deep:#A9DFFF;
+  --pr-light:#ECF0FB;--pr-pale:#F5F7FD;--sky:#DDF4FF;--sky-deep:#BFE7FF;
   --font:'Roboto',Arial,sans-serif;--sidebar-w:260px;--nav-h:56px;
 }
 html{scroll-behavior:smooth}
@@ -30,10 +30,10 @@ body{font-family:var(--font);background:var(--dune);color:var(--ph-black);font-s
 
 /* ── LAYOUT ── */
 .page-body{display:flex;margin-top:var(--nav-h)}
-.sidebar{width:var(--sidebar-w);min-height:calc(100vh - var(--nav-h));background:var(--sky);position:fixed;top:var(--nav-h);left:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto;border-right:1px solid #b8ddf1}
+.sidebar{width:var(--sidebar-w);min-height:calc(100vh - var(--nav-h));background:var(--sky)!important;position:fixed;top:var(--nav-h);left:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto;border-right:1px solid #b8ddf1}
 .sidebar-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--pr-navy);padding:20px 22px 8px}
 .sidebar nav a{display:flex;align-items:flex-start;gap:10px;padding:9px 22px;color:var(--pr-navy);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent;line-height:1.4}
-.sidebar nav a:hover,.sidebar nav a.active{color:var(--ph-black);border-left-color:var(--pr-mid);background:rgba(255,255,255,0.55)}
+.sidebar nav a:hover,.sidebar nav a.active{color:var(--ph-black);border-left-color:var(--pr-mid);background:rgba(255,255,255,0.72)}
 .sidebar nav a .num{color:var(--ph-black);font-weight:700;font-size:10px;width:16px;flex-shrink:0;margin-top:2px}
 .sidebar-footer{padding:16px 22px;border-top:1px solid #b8ddf1;font-size:11px;color:var(--pr-mid);margin-top:auto}
 .main{margin-left:var(--sidebar-w);flex:1;display:flex;flex-direction:column;align-items:center}
@@ -104,7 +104,7 @@ ol.styled li::before{content:counter(item);width:22px;height:22px;background:var
 /* New Precis-light card style */
 .exec-card.precis-light{background:var(--pr-light);border:1px solid #d0d9f0}
 .exec-card .icon{font-size:22px;margin-bottom:10px}
-.exec-card.relationship-card .icon{color:var(--green)}
+.exec-card.relationship-card .icon{color:var(--green)!important;text-shadow:0 0 0 var(--green)}
 .exec-card h4{font-size:13px;font-weight:700;margin-bottom:7px}
 .exec-card.dark h4,.exec-card.navy h4{color:var(--green)}
 .exec-card.green-bg h4{color:var(--ph-black)}
@@ -153,10 +153,10 @@ ol.styled li::before{content:counter(item);width:22px;height:22px;background:var
 .qexample strong{color:var(--ph-black)}
 
 /* ── APPLY CTA ── */
-.apply-cta{background:var(--white);border:1px solid #d7e8f4;border-radius:8px;padding:40px;text-align:center;margin:40px 0;box-shadow:0 16px 40px rgba(26,39,68,0.08)}
-.apply-cta h2{display:inline-block;background:var(--sky);font-size:30px;font-weight:900;color:var(--ph-black);margin-bottom:18px;letter-spacing:-.5px;padding:10px 22px;border-radius:999px}
+.apply-cta{background:var(--sky)!important;border:1px solid #b8ddf1;border-radius:8px;padding:40px;text-align:center;margin:40px 0;box-shadow:0 16px 40px rgba(26,39,68,0.08)}
+.apply-cta h2{display:inline-block;background:rgba(255,255,255,0.9);font-size:30px;font-weight:900;color:var(--ph-black);margin-bottom:18px;letter-spacing:-.5px;padding:10px 22px;border-radius:999px}
 .apply-cta p{font-size:16px;color:rgba(39,37,37,.78);margin-bottom:30px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.7}
-.btn-apply{display:inline-block;background:var(--sky);color:var(--ph-black);font-size:18px;font-weight:800;padding:16px 40px;border-radius:999px;text-decoration:none;letter-spacing:.3px;transition:opacity .15s}
+.btn-apply{display:inline-block;background:var(--white);color:var(--ph-black);font-size:18px;font-weight:800;padding:16px 40px;border-radius:999px;text-decoration:none;letter-spacing:.3px;transition:opacity .15s;border:1px solid #b8ddf1}
 .btn-apply:hover{opacity:.88}
 .apply-meta{margin-top:16px;font-size:12px;color:rgba(39,37,37,.58)}
 
