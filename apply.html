@@ -10,7 +10,7 @@
 :root{
   --green:#28EF8F;--ph-black:#272525;--pr-navy:#1A2744;--pr-mid:#2C3E6B;
   --white:#FFFFFF;--carbon:#646464;--dune:#F4F3EC;--slate:#EDF0F7;--concrete:#E6E7E8;
-  --red:#E53935;--amber:#F59E0B;
+  --red:#E53935;--amber:#F59E0B;--pr-light:#ECF0FB;--pr-pale:#F5F7FD;
   --font:'Roboto',Arial,sans-serif;--nav-h:56px;
 }
 html{scroll-behavior:smooth}
@@ -21,7 +21,7 @@ body{font-family:var(--font);background:var(--dune);color:var(--ph-black);font-s
 .nav-brand{display:flex;align-items:center;gap:12px}
 .nav-ph-logo{height:18px;width:auto}
 .nav-sep{width:1px;height:20px;background:rgba(255,255,255,0.2)}
-.nav-pr-logo{height:14px;width:auto}
+.nav-pr-logo{height:22px;width:auto}
 .nav-links{display:flex;gap:6px;align-items:center}
 .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;font-weight:500;padding:6px 14px;border-radius:4px;transition:all .15s}
 .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.08)}
@@ -34,7 +34,8 @@ body{font-family:var(--font);background:var(--dune);color:var(--ph-black);font-s
 /* ── FORM HERO ── */
 .form-hero{background:var(--ph-black);border-radius:8px;padding:40px 48px 36px;position:relative;overflow:hidden;margin-bottom:32px}
 .form-hero::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green) 0%,var(--green) 55%,var(--pr-mid) 100%)}
-.form-hero::before{display:none}
+/* Precis light accent in top-right */
+.form-hero::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:linear-gradient(135deg,var(--pr-light) 0%,var(--pr-pale) 100%);opacity:0.9;clip-path:polygon(18% 0,100% 0,100% 100%,0% 100%)}
 .form-hero-inner{position:relative;z-index:1}
 .form-tag{display:inline-block;background:var(--green);color:var(--ph-black);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:16px}
 .form-hero h1{font-size:32px;font-weight:900;color:var(--white);letter-spacing:-0.8px;margin-bottom:8px}
@@ -63,7 +64,7 @@ label{display:block;font-size:12px;font-weight:700;color:var(--pr-navy);text-tra
 label .req{color:var(--green);margin-left:2px}
 label .opt{color:var(--carbon);font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;margin-left:4px}
 .field-hint{font-size:12px;color:var(--carbon);margin-bottom:8px;line-height:1.5}
-.field-example{font-size:12px;color:var(--carbon);line-height:1.5;padding:8px 12px;background:var(--dune);border-left:3px solid var(--green);margin-bottom:10px;border-radius:0 3px 3px 0}
+.field-example{font-size:12px;color:var(--carbon);line-height:1.5;padding:8px 12px;background:var(--pr-light);border-left:3px solid var(--pr-mid);margin-bottom:10px;border-radius:0 3px 3px 0}
 .field-example strong{color:var(--ph-black)}
 
 input[type=text],input[type=email],select,textarea{width:100%;border:1.5px solid var(--concrete);border-radius:4px;font-family:var(--font);font-size:14px;color:var(--ph-black);background:var(--white);transition:border-color .15s,box-shadow .15s;outline:none}
@@ -113,24 +114,15 @@ input.error,select.error,textarea.error{border-color:var(--red)}
 .success-back{display:inline-block;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:10px 22px;border-radius:4px;transition:background .15s}
 .success-back:hover{background:rgba(255,255,255,.14)}
 
-/* ── SETUP CALLOUT ── */
-.setup-box{background:var(--pr-navy);border-radius:6px;padding:24px 28px;margin-top:28px}
-.setup-box h3{font-size:14px;font-weight:700;color:var(--green);margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.setup-box p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:12px}
-.setup-box ol{padding-left:20px;margin:0}
-.setup-box ol li{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:6px}
-.setup-box code{display:block;background:rgba(0,0,0,.35);color:var(--green);font-size:12px;padding:12px 14px;border-radius:4px;margin:10px 0;font-family:monospace;line-height:1.6;white-space:pre;overflow-x:auto}
-.setup-box a{color:var(--green);text-decoration:underline}
-
 /* ── FOOTER ── */
 .page-footer{margin-top:40px;padding-top:20px;border-top:2px solid var(--green);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .footer-brand{display:flex;align-items:center;gap:12px}
 .footer-ph-logo{height:16px;width:auto}
 .footer-sep{width:1px;height:18px;background:var(--concrete)}
-.footer-pr-logo{height:13px;width:auto}
+.footer-pr-logo{height:18px;width:auto}
 .footer-meta{font-size:11px;color:var(--carbon);text-align:right;line-height:1.5}
 
-@media(max-width:640px){.field-row{grid-template-columns:1fr}.form-hero{padding:28px 20px 24px}.form-hero h1{font-size:26px}.fsec-body{padding:18px 16px 4px}.submit-area{flex-direction:column;align-items:flex-start}.btn-submit{width:100%}}
+@media(max-width:640px){.field-row{grid-template-columns:1fr}.form-hero{padding:28px 20px 24px}.form-hero::before{display:none}.form-hero h1{font-size:26px}.fsec-body{padding:18px 16px 4px}.submit-area{flex-direction:column;align-items:flex-start}.btn-submit{width:100%}}
 </style>
 </head>
 <body>
@@ -305,12 +297,12 @@ input.error,select.error,textarea.error{border-color:var(--red)}
 
         <div class="field-group">
           <label>How many hours per month can you realistically commit? <span class="req">*</span></label>
-          <div class="field-hint">Each session is roughly 60 minutes. You will have 5 sessions across 3 months, plus a short check-in with the People team at week 6.</div>
+          <div class="field-hint">The minimum commitment is 2 hours per month — this covers your sessions plus a short reflection after each one. Most participants find 3–4 hours gives them space to prepare properly.</div>
           <div class="radio-group" id="q5-group">
-            <label class="radio-opt"><input type="radio" name="q5" value="3h (minimum)"> 3 hours</label>
+            <label class="radio-opt"><input type="radio" name="q5" value="2h (minimum)"> 2 hours</label>
+            <label class="radio-opt"><input type="radio" name="q5" value="3h"> 3 hours</label>
             <label class="radio-opt"><input type="radio" name="q5" value="4h"> 4 hours</label>
-            <label class="radio-opt"><input type="radio" name="q5" value="5h"> 5 hours</label>
-            <label class="radio-opt"><input type="radio" name="q5" value="6h+"> 6 hours +</label>
+            <label class="radio-opt"><input type="radio" name="q5" value="5h+"> 5 hours +</label>
           </div>
           <div class="err-msg" id="err-q5">Please select a commitment level.</div>
         </div>
@@ -366,7 +358,9 @@ input.error,select.error,textarea.error{border-color:var(--red)}
 
 <script>
 // ── SCRIPT URL ── Replace this with your Google Apps Script Web App URL after deploying
-const SCRIPT_URL = 'YOUR_SCRIPT_URL_HERE';
+// Your Google Sheet ID: 1ziD5qFWDASGOfB45-Fb9e2Wkosf0YSKXAta5n6xJepQ
+// Full setup instructions are in hr.html → Section 6
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwYkh7p-t5JYFVqtzS8c05iLSpj9NocwPNdk16uEEXu2Wu2FGbVdYDd04wUSAh4cuPEBg/exec';
 
 // ── WORD COUNTER ──
 function countWords(str){return str.trim()===''?0:str.trim().split(/\s+/).length}
@@ -384,24 +378,19 @@ document.querySelectorAll('textarea[data-max]').forEach(function(ta){
 });
 
 // ── PROGRESS ──
-const REQUIRED_QUESTIONS=['q1','q3','q4'];
 const progressBar=document.getElementById('progress-bar');
 const progressLabel=document.getElementById('progress-label');
 
 function updateProgress(){
   let answered=0;
-  // name, email, company, role
   if(document.getElementById('f-name').value.trim()) answered++;
   if(document.getElementById('f-email').value.trim()) answered++;
   if(document.getElementById('f-company').value) answered++;
   if(document.getElementById('f-role').value.trim()) answered++;
-  // textareas q1 q3 q4 q6
   ['q1','q3','q4','q6'].forEach(function(id){
     if(document.getElementById(id).value.trim()) answered++;
   });
-  // q5 radio
   if(document.querySelector('input[name="q5"]:checked')) answered++;
-  // total tracked: 9 (4 about-you + 4 questions + q5)
   const pct=Math.round((answered/9)*100);
   progressBar.style.width=pct+'%';
   progressLabel.textContent=pct+'% complete';
@@ -443,19 +432,16 @@ document.querySelectorAll('input[name="q5"]').forEach(function(r){
 
 function validateForm(){
   let valid=true;
-  // About you
   if(!document.getElementById('f-name').value.trim()){showErr('name');valid=false}
   const email=document.getElementById('f-email').value.trim();
   if(!email||!email.includes('@')){showErr('email','Please enter a valid work email.');valid=false}
   if(!document.getElementById('f-company').value){showErr('company');valid=false}
   if(!document.getElementById('f-role').value.trim()){showErr('role');valid=false}
-  // Questions
   if(!document.getElementById('q1').value.trim()){showErr('q1','Please answer this question.');valid=false}
   if(!document.getElementById('q3').value.trim()){showErr('q3','Please answer this question.');valid=false}
   if(!document.getElementById('q4').value.trim()){showErr('q4','Please answer this question.');valid=false}
   if(!document.querySelector('input[name="q5"]:checked')){showErr('q5','Please select a commitment level.');valid=false}
   if(!document.getElementById('q6').value.trim()){showErr('q6','Please answer this question.');valid=false}
-  // Word limits
   const checks=[{id:'q1',max:150},{id:'q2',max:75},{id:'q3',max:120},{id:'q4',max:150},{id:'q6',max:120},{id:'q7',max:100}];
   checks.forEach(function(c){
     const ta=document.getElementById(c.id);
@@ -472,7 +458,6 @@ function validateForm(){
 document.getElementById('bridge-form').addEventListener('submit',function(e){
   e.preventDefault();
   if(!validateForm()){
-    // scroll to first error
     const firstErr=document.querySelector('.err-msg.show, .word-counter.over');
     if(firstErr){firstErr.scrollIntoView({behavior:'smooth',block:'center'})}
     return;
@@ -498,7 +483,6 @@ document.getElementById('bridge-form').addEventListener('submit',function(e){
   };
 
   if(SCRIPT_URL==='YOUR_SCRIPT_URL_HERE'){
-    // Demo mode: show success without actually posting
     setTimeout(function(){document.getElementById('success-screen').classList.add('show')},600);
     return;
   }
