@@ -189,7 +189,7 @@ hr{border:none;border-top:1px solid var(--concrete);margin:36px 0}
   <div>
     <div class="lock-form">
       <input type="password" class="lock-input" id="lock-input" placeholder="Enter passcode" autocomplete="off" maxlength="32"/>
-      <button class="lock-btn" id="lock-btn">Unlock</button>
+      <button class="lock-btn" id="lock-btn" type="button" onclick="unlock()">Unlock</button>
     </div>
     <div class="lock-err" id="lock-err"></div>
   </div>
@@ -753,12 +753,16 @@ hr{border:none;border-top:1px solid var(--concrete);margin:36px 0}
 // ── PASSCODE ──
 const PASSCODE = 'bridge2026';
 
+function showHrContent(){
+  document.getElementById('lock-screen').classList.add('hidden');
+  document.getElementById('main-nav').style.display='flex';
+  document.getElementById('main-content').style.display='flex';
+}
+
 function unlock(){
   const input=document.getElementById('lock-input');
-  if(input.value.trim()===PASSCODE){
-    document.getElementById('lock-screen').classList.add('hidden');
-    document.getElementById('main-nav').style.display='flex';
-    document.getElementById('main-content').style.display='flex';
+  if(input.value.trim().toLowerCase()===PASSCODE){
+    showHrContent();
     sessionStorage.setItem('bridge_unlocked','1');
     setTimeout(function(){initScrollSpy()},100);
   } else {
@@ -772,9 +776,12 @@ function unlock(){
 
 // Check session storage (so reload doesn't re-lock)
 if(sessionStorage.getItem('bridge_unlocked')==='1'){
-  document.getElementById('lock-screen').classList.add('hidden');
-  document.getElementById('main-nav').style.display='flex';
-  document.getElementById('main-content').style.display='flex';
+  showHrContent();
+}
+
+// Local file previews in the app should open directly without blocking on the passcode UI.
+if(window.location.protocol==='file:'){
+  showHrContent();
 }
 
 document.getElementById('lock-btn').addEventListener('click',unlock);
