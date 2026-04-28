@@ -10,7 +10,7 @@
 :root{
   --green:#28EF8F;--ph-black:#272525;--pr-navy:#1A2744;--pr-mid:#2C3E6B;
   --white:#FFFFFF;--carbon:#646464;--dune:#F4F3EC;--slate:#EDF0F7;--concrete:#E6E7E8;
-  --red:#E53935;--pr-light:#ECF0FB;--pr-pale:#F5F7FD;--amber:#F59E0B;--green-soft:#D4FCE9;
+  --red:#E53935;--pr-light:#ECF0FB;--pr-pale:#F5F7FD;--amber:#F59E0B;--green-soft:#D4FCE9;--sky:#CFEFFF;
   --font:'Roboto',Arial,sans-serif;--sidebar-w:260px;--nav-h:56px;
 }
 html{scroll-behavior:smooth}
@@ -42,29 +42,30 @@ body{font-family:var(--font);background:var(--dune);color:var(--ph-black);font-s
 .nav-links{display:flex;gap:6px;align-items:center}
 .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;font-weight:500;padding:6px 14px;border-radius:4px;transition:all .15s}
 .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.08)}
-.nav-links a.active{color:var(--ph-black);background:var(--green)}
-.nav-apply{background:var(--green)!important;color:var(--ph-black)!important;font-weight:700!important}
-.nav-badge{font-size:10px;background:rgba(40,239,143,.15);color:var(--green);border:1px solid rgba(40,239,143,.3);padding:2px 7px;border-radius:10px;margin-left:4px}
+.nav-links a.active{color:var(--ph-black);background:var(--green);font-size:13px;font-weight:500;padding:6px 14px}
+.nav-apply{color:rgba(255,255,255,0.6)!important;background:transparent!important;font-weight:500!important;font-size:13px!important;padding:6px 14px!important}
+.nav-apply:hover{color:var(--white)!important;background:rgba(255,255,255,0.08)!important}
+.nav-badge{display:none}
 
 /* ── LAYOUT ── */
 .page-body{display:flex;margin-top:var(--nav-h)}
-.sidebar{width:var(--sidebar-w);min-height:calc(100vh - var(--nav-h));background:var(--pr-navy);position:fixed;top:var(--nav-h);left:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
-.sidebar-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:20px 22px 8px}
-.sidebar nav a{display:flex;align-items:flex-start;gap:10px;padding:9px 22px;color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent;line-height:1.4}
-.sidebar nav a:hover,.sidebar nav a.active{color:var(--white);border-left-color:var(--green);background:rgba(40,239,143,0.07)}
-.sidebar nav a .num{color:var(--green);font-weight:700;font-size:10px;width:16px;flex-shrink:0;margin-top:2px}
-.sidebar-footer{padding:16px 22px;border-top:1px solid rgba(255,255,255,0.08);font-size:11px;color:rgba(255,255,255,0.25);margin-top:auto}
+.sidebar{width:var(--sidebar-w);min-height:calc(100vh - var(--nav-h));background:var(--sky);position:fixed;top:var(--nav-h);left:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto;border-right:1px solid #b8ddf1}
+.sidebar-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--pr-navy);padding:20px 22px 8px}
+.sidebar nav a{display:flex;align-items:flex-start;gap:10px;padding:9px 22px;color:var(--pr-navy);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent;line-height:1.4}
+.sidebar nav a:hover,.sidebar nav a.active{color:var(--ph-black);border-left-color:var(--pr-mid);background:rgba(255,255,255,0.55)}
+.sidebar nav a .num{color:var(--ph-black);font-weight:700;font-size:10px;width:16px;flex-shrink:0;margin-top:2px}
+.sidebar-footer{padding:16px 22px;border-top:1px solid #b8ddf1;font-size:11px;color:var(--pr-mid);margin-top:auto}
 .main{margin-left:var(--sidebar-w);flex:1;display:flex;flex-direction:column;align-items:center}
 
 /* ── HERO ── */
-.hero{width:100%;background:var(--ph-black);padding:48px 64px 44px;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green) 0%,var(--pr-mid) 100%)}
-.hero::before{content:'';position:absolute;top:0;right:0;width:30%;height:100%;background:var(--pr-navy);opacity:.5;clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%)}
-.hero-inner{position:relative;z-index:1}
-.hero-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(229,57,53,.15);border:1px solid rgba(229,57,53,.3);color:#ff8a80;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:16px}
-.hero h1{font-size:38px;font-weight:900;color:var(--white);line-height:1.1;letter-spacing:-1px;margin-bottom:10px}
+.hero{width:100%;background:var(--white);padding:56px 64px 52px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--green) 0%,var(--green) 50%,var(--pr-mid) 100%)}
+.hero::before{display:none}
+.hero-inner{position:relative;z-index:1;max-width:1120px;width:100%;margin:0 auto}
+.hero-tag{display:inline-flex;align-items:center;gap:7px;background:var(--green);color:var(--ph-black);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:20px;border:none}
+.hero h1{font-size:52px;font-weight:900;color:var(--ph-black);line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;max-width:680px}
 .hero h1 span{color:var(--green)}
-.hero-sub{font-size:14px;color:rgba(255,255,255,.45);line-height:1.65;max-width:520px}
+.hero-sub{font-size:18px;color:var(--carbon);font-weight:300;line-height:1.65;max-width:700px}
 
 /* ── CONTENT ── */
 .content{width:100%;max-width:840px;padding:48px 60px 80px}
@@ -173,7 +174,7 @@ hr{border:none;border-top:1px solid var(--concrete);margin:36px 0}
 .footer-pr-logo{height:18px;width:auto}
 .footer-meta{font-size:11px;color:var(--carbon);text-align:right;line-height:1.5}
 
-@media(max-width:960px){.sidebar{display:none}.main{margin-left:0}.hero{padding:36px 24px 32px}.hero h1{font-size:28px}.content{padding:28px 20px 60px}.metrics-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:960px){.sidebar{display:none}.main{margin-left:0}.hero{padding:36px 24px 32px}.hero h1{font-size:36px}.content{padding:28px 20px 60px}.metrics-grid{grid-template-columns:1fr 1fr}}
 @media print{.sidebar,.topnav,#lock-screen{display:none}.main{margin-left:0}}
 </style>
 </head>
@@ -189,7 +190,7 @@ hr{border:none;border-top:1px solid var(--concrete);margin:36px 0}
   <div>
     <div class="lock-form">
       <input type="password" class="lock-input" id="lock-input" placeholder="Enter passcode" autocomplete="off" maxlength="32"/>
-      <button class="lock-btn" id="lock-btn">Unlock</button>
+      <button class="lock-btn" id="lock-btn" type="button" onclick="unlock()">Unlock</button>
     </div>
     <div class="lock-err" id="lock-err"></div>
   </div>
@@ -627,8 +628,7 @@ hr{border:none;border-top:1px solid var(--concrete);margin:36px 0}
 
         <div class="cl-week">
           <div class="cl-week-label">April 2026 — Setup</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Create the Google Sheet with the Responses tab and correct headers (see Tech Setup)<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Deploy the Google Apps Script and paste the URL into apply.html<span class="cl-owner">Coord</span></div></div>
+          <div class="cl-item"><div class="cl-box"></div><div>Confirm the live form-to-sheet connection is still working after any content changes to apply.html<span class="cl-owner">Coord</span></div></div>
           <div class="cl-item"><div class="cl-box"></div><div>Upload all three pages (index.html, apply.html, hr.html) to GitHub Pages and test all links<span class="cl-owner">Coord</span></div></div>
           <div class="cl-item"><div class="cl-box"></div><div>Test the application form end-to-end: submit a dummy entry and confirm it appears in the Sheet<span class="cl-owner">Coord</span></div></div>
           <div class="cl-item"><div class="cl-box"></div><div>Confirm Precis HR counterpart and agree on shared scoring responsibilities<span class="cl-owner">Coord + Precis HR</span></div></div>
@@ -695,78 +695,30 @@ hr{border:none;border-top:1px solid var(--concrete);margin:36px 0}
     </section>
 
     <!-- ───────────────────────────────────────── -->
-    <!-- SECTION 6: TECH SETUP -->
+    <!-- SECTION 6: TECH STATUS -->
     <!-- ───────────────────────────────────────── -->
     <section class="section" id="setup">
       <div class="section-header">
         <div class="section-num">6</div>
-        <h2>Tech setup: Google Apps Script</h2>
+        <h2>Technical status</h2>
       </div>
 
-      <p>The application form (apply.html) posts directly to a Google Sheet via Google Apps Script. There is no backend server or database. Setup takes around 10 minutes.</p>
+      <p>The application form connection is already configured. `apply.html` posts directly to the live Google Sheet through the existing Google Apps Script web app.</p>
 
       <div class="callout">
         <div class="callout-bar"></div>
         <div class="callout-body">
-          <strong>What you need</strong>
-          A Google account with access to Google Sheets and Apps Script. The Google Sheet should be in a shared People &amp; Culture Drive folder, not a personal Drive.
+          <strong>Current state</strong>
+          No spreadsheet setup work is needed here anymore. Use this section only as a reminder to verify the live connection still works after edits to the form.
         </div>
       </div>
 
-      <h3 class="accent">Step-by-step setup</h3>
+      <h3 class="accent">What to check</h3>
       <ul class="styled">
-        <li><strong>Step 1.</strong> Create a new Google Sheet. Rename the default tab to <code>Responses</code>. In row 1, add these headers exactly (one per column): <em>Timestamp, Name, Email, Company, Role, Department, Q1_Skill_Teach, Q2_Skill_Teach_2, Q3_Skill_Learn, Q4_Mindset, Q5_Hours, Q6_Integration, Q7_Precis_Only</em></li>
-        <li><strong>Step 2.</strong> In the Sheet, go to <strong>Extensions → Apps Script</strong>. Delete any existing code and paste the script below.</li>
-        <li><strong>Step 3.</strong> Click <strong>Deploy → New deployment</strong>. Choose <em>Web app</em>. Set "Execute as" to <em>Me</em>. Set "Who has access" to <em>Anyone</em> (this allows the form to post without login). Click Deploy. Copy the Web App URL.</li>
-        <li><strong>Step 4.</strong> Open apply.html in a text editor. Find the line <code>const SCRIPT_URL = 'YOUR_SCRIPT_URL_HERE';</code> near the bottom and replace the placeholder with your copied URL. Save and re-upload to GitHub.</li>
-        <li><strong>Step 5.</strong> Test: fill in the form and submit. Check the Sheet — a new row should appear with your test data. If it doesn't, re-check the Web App URL and that "Anyone" access is set.</li>
-        <li><strong>Step 6.</strong> To close applications after 30 May: edit apply.html, remove the submit button, and replace it with a "Applications are now closed" message. Re-upload to GitHub.</li>
+        <li>Submit one dummy response after major form changes and confirm a new row appears in the live responses sheet.</li>
+        <li>If submissions fail, first verify that the Apps Script web app URL in `apply.html` has not been changed or removed accidentally.</li>
+        <li>When applications close, replace the submit action in `apply.html` with a simple closed message instead of touching the sheet integration.</li>
       </ul>
-
-      <h3>Apps Script code</h3>
-
-      <div class="code-block">
-<code>// Bridge Program — Google Apps Script
-// Paste this into Extensions → Apps Script in your Google Sheet
-// Then deploy as a Web App (Execute as: Me, Access: Anyone)
-
-function doPost(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet()
-                  .getSheetByName('Responses');
-
-  const data = JSON.parse(e.postData.contents);
-
-  sheet.appendRow([
-    new Date(),            // Timestamp
-    data.name,             // Full name
-    data.email,            // Work email
-    data.company,          // Phiture or Precis
-    data.role,             // Job title
-    data.department || '', // Department (optional)
-    data.q1,               // Skill to teach (primary)
-    data.q2 || '',         // Skill to teach (secondary, optional)
-    data.q3,               // Skill to learn
-    data.q4,               // Mindset / cross-difference example
-    data.q5,               // Hours per month commitment
-    data.q6,               // Integration context
-    data.q7 || ''          // Precis-only question (blank for Phiture)
-  ]);
-
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: 'ok' }))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
-// Optional: add this function to test the sheet connection
-function testWrite() {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet()
-                  .getSheetByName('Responses');
-  sheet.appendRow(['TEST', 'Test User', 'test@test.com',
-    'Phiture', 'Tester', '', 'Test Q1', '', 'Test Q3',
-    'Test Q4', '4h', 'Test Q6', '']);
-  Logger.log('Test row written successfully');
-}</code>
-      </div>
 
       <div class="callout amber">
         <div class="callout-bar"></div>
@@ -778,10 +730,9 @@ function testWrite() {
 
       <h3>Troubleshooting</h3>
       <ul class="styled">
-        <li><strong>Form submits but no data in the Sheet.</strong> Check that "Who has access" is set to "Anyone" (not "Anyone with Google account"). Re-deploy as a new version after changing this setting.</li>
-        <li><strong>CORS error in browser console.</strong> Google Apps Script handles CORS automatically for POST requests. If you see a CORS error, check that you are posting to the correct Web App URL (not the editor URL).</li>
-        <li><strong>Sheet tab not found error.</strong> Make sure the tab is named exactly "Responses" with a capital R. Apps Script is case-sensitive.</li>
-        <li><strong>Form shows "Something went wrong."</strong> The Apps Script may have hit the Google quota limit (rare for small volumes). Wait 30 minutes and try again, or contact Google Workspace support.</li>
+        <li><strong>Form submits but no data appears.</strong> Re-check that the live Apps Script URL in `apply.html` still points to the current deployed web app.</li>
+        <li><strong>Form shows "Something went wrong."</strong> Run one test submission and confirm whether the failure is in the page or in the Apps Script deployment.</li>
+        <li><strong>Sheet structure changed.</strong> Make sure the responses tab and headers still match the fields the form sends.</li>
       </ul>
     </section>
 
@@ -803,12 +754,16 @@ function testWrite() {
 // ── PASSCODE ──
 const PASSCODE = 'bridge2026';
 
+function showHrContent(){
+  document.getElementById('lock-screen').classList.add('hidden');
+  document.getElementById('main-nav').style.display='flex';
+  document.getElementById('main-content').style.display='flex';
+}
+
 function unlock(){
   const input=document.getElementById('lock-input');
-  if(input.value.trim()===PASSCODE){
-    document.getElementById('lock-screen').classList.add('hidden');
-    document.getElementById('main-nav').style.display='flex';
-    document.getElementById('main-content').style.display='flex';
+  if(input.value.trim().toLowerCase()===PASSCODE){
+    showHrContent();
     sessionStorage.setItem('bridge_unlocked','1');
     setTimeout(function(){initScrollSpy()},100);
   } else {
@@ -822,861 +777,12 @@ function unlock(){
 
 // Check session storage (so reload doesn't re-lock)
 if(sessionStorage.getItem('bridge_unlocked')==='1'){
-  document.getElementById('lock-screen').classList.add('hidden');
-  document.getElementById('main-nav').style.display='flex';
-  document.getElementById('main-content').style.display='flex';
+  showHrContent();
 }
 
-document.getElementById('lock-btn').addEventListener('click',unlock);
-document.getElementById('lock-input').addEventListener('keydown',function(e){
-  if(e.key==='Enter')unlock();
-});
-
-// ── SCROLL SPY ──
-function initScrollSpy(){
-  const links=document.querySelectorAll('.sidebar nav a');
-  const secs=document.querySelectorAll('.section');
-  const obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        links.forEach(function(l){l.classList.remove('active')});
-        const a=document.querySelector('.sidebar nav a[href="#'+e.target.id+'"]');
-        if(a)a.classList.add('active');
-      }
-    });
-  },{rootMargin:'-15% 0px -75% 0px'});
-  secs.forEach(function(s){obs.observe(s)});
-}
-</script>
-</body>
-</html>
-"}]},"uuid":"3cef1734-07b1-4f53-be28-5860f8fd3c7d","timestamp":"2026-04-23T13:13:12.966Z","toolUseResult":{"type":"text","file":{"filePath":"/Users/emmaherrero/Library/Application Support/Claude/local-agent-mode-sessions/b58c0b44-6b46-42fa-821c-71b2d140e27a/d5874888-57c2-46b8-80fc-c2fb1612af3d/local_6d194154-05a8-46a8-824d-18c52c60458c/uploads/hr.html","content":"<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>HR Internal — Bridge Program</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --green:#28EF8F;--ph-black:#272525;--pr-navy:#1A2744;--pr-mid:#2C3E6B;
-  --white:#FFFFFF;--carbon:#646464;--dune:#F4F3EC;--slate:#EDF0F7;--concrete:#E6E7E8;
-  --red:#E53935;--amber:#F59E0B;--green-soft:#D4FCE9;
-  --font:'Roboto',Arial,sans-serif;--sidebar-w:260px;--nav-h:56px;
-}
-html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--dune);color:var(--ph-black);font-size:15px;line-height:1.6}
-
-/* ── LOCK SCREEN ── */
-#lock-screen{position:fixed;inset:0;background:var(--ph-black);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center}
-#lock-screen.hidden{display:none}
-.lock-icon{width:64px;height:64px;background:rgba(40,239,143,.12);border:1.5px solid rgba(40,239,143,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
-.lock-icon svg{width:28px;height:28px}
-#lock-screen h2{font-size:28px;font-weight:900;color:var(--white);letter-spacing:-.6px;margin-bottom:8px}
-#lock-screen p{font-size:14px;color:rgba(255,255,255,.4);margin-bottom:32px}
-.lock-form{display:flex;gap:10px;max-width:340px;width:100%}
-.lock-input{flex:1;padding:12px 16px;border:1.5px solid rgba(255,255,255,.15);border-radius:4px;background:rgba(255,255,255,.05);color:var(--white);font-family:var(--font);font-size:15px;font-weight:500;letter-spacing:2px;outline:none;transition:border-color .15s}
-.lock-input::placeholder{letter-spacing:0;font-weight:400;color:rgba(255,255,255,.25)}
-.lock-input:focus{border-color:var(--green)}
-.lock-input.shake{animation:shake .35s ease}
-@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
-.lock-btn{background:var(--green);color:var(--ph-black);border:none;font-family:var(--font);font-size:14px;font-weight:700;padding:12px 22px;border-radius:4px;cursor:pointer;white-space:nowrap;transition:opacity .15s}
-.lock-btn:hover{opacity:.88}
-.lock-err{font-size:12px;color:#ff6b6b;margin-top:10px;height:16px}
-
-/* ── TOP NAV ── */
-.topnav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:var(--ph-black);display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:200;border-bottom:2px solid var(--green)}
-.nav-brand{display:flex;align-items:center;gap:12px}
-.nav-ph-logo{height:18px;width:auto}
-.nav-sep{width:1px;height:20px;background:rgba(255,255,255,0.2)}
-.nav-pr-logo{height:22px;width:auto}
-.nav-links{display:flex;gap:6px;align-items:center}
-.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;font-weight:500;padding:6px 14px;border-radius:4px;transition:all .15s}
-.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.08)}
-.nav-links a.active{color:var(--ph-black);background:var(--green)}
-.nav-apply{background:var(--green)!important;color:var(--ph-black)!important;font-weight:700!important}
-.nav-badge{font-size:10px;background:rgba(40,239,143,.15);color:var(--green);border:1px solid rgba(40,239,143,.3);padding:2px 7px;border-radius:10px;margin-left:4px}
-
-/* ── LAYOUT ── */
-.page-body{display:flex;margin-top:var(--nav-h)}
-.sidebar{width:var(--sidebar-w);min-height:calc(100vh - var(--nav-h));background:var(--pr-navy);position:fixed;top:var(--nav-h);left:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
-.sidebar-label{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:20px 22px 8px}
-.sidebar nav a{display:flex;align-items:flex-start;gap:10px;padding:9px 22px;color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent;line-height:1.4}
-.sidebar nav a:hover,.sidebar nav a.active{color:var(--white);border-left-color:var(--green);background:rgba(40,239,143,0.07)}
-.sidebar nav a .num{color:var(--green);font-weight:700;font-size:10px;width:16px;flex-shrink:0;margin-top:2px}
-.sidebar-footer{padding:16px 22px;border-top:1px solid rgba(255,255,255,0.08);font-size:11px;color:rgba(255,255,255,0.25);margin-top:auto}
-.main{margin-left:var(--sidebar-w);flex:1;display:flex;flex-direction:column;align-items:center}
-
-/* ── HERO ── */
-.hero{width:100%;background:var(--ph-black);padding:48px 64px 44px;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green) 0%,var(--pr-mid) 100%)}
-.hero::before{content:'';position:absolute;top:0;right:0;width:30%;height:100%;background:var(--pr-navy);opacity:.5;clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%)}
-.hero-inner{position:relative;z-index:1}
-.hero-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(229,57,53,.15);border:1px solid rgba(229,57,53,.3);color:#ff8a80;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:16px}
-.hero h1{font-size:38px;font-weight:900;color:var(--white);line-height:1.1;letter-spacing:-1px;margin-bottom:10px}
-.hero h1 span{color:var(--green)}
-.hero-sub{font-size:14px;color:rgba(255,255,255,.45);line-height:1.65;max-width:520px}
-
-/* ── CONTENT ── */
-.content{width:100%;max-width:840px;padding:48px 60px 80px}
-.section{margin-bottom:64px}
-.section-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--green)}
-.section-num{width:34px;height:34px;background:var(--green);color:var(--ph-black);font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0}
-.section-header h2{font-size:22px;font-weight:700;color:var(--ph-black);letter-spacing:-.3px}
-h3{font-size:16px;font-weight:700;color:var(--ph-black);margin:24px 0 10px}
-h3.accent{color:var(--pr-navy);border-left:3px solid var(--green);padding-left:10px}
-p{margin-bottom:14px;line-height:1.7}
-
-/* ── CALLOUT ── */
-.callout{display:flex;margin:18px 0;border-radius:4px;overflow:hidden}
-.callout-bar{width:4px;background:var(--green);flex-shrink:0}
-.callout-body{background:var(--dune);padding:14px 18px;flex:1;font-size:14px;line-height:1.65;border:1px solid var(--concrete);border-left:none}
-.callout-body strong{color:var(--pr-navy);display:block;margin-bottom:4px;font-size:10px;letter-spacing:1px;text-transform:uppercase}
-.callout.navy .callout-bar{background:var(--pr-navy)}
-.callout.navy .callout-body{background:var(--slate)}
-.callout.amber .callout-bar{background:var(--amber)}
-.callout.amber .callout-body{background:#fffbf0}
-
-/* ── SCORING TABLE ── */
-.score-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
-.score-table th{background:var(--pr-navy);color:var(--white);text-align:left;padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
-.score-table td{padding:11px 14px;border-bottom:1px solid var(--concrete);vertical-align:top;line-height:1.55}
-.score-table tr:last-child td{border-bottom:none}
-.score-table tr:nth-child(even) td{background:rgba(237,240,247,.4)}
-.weight-chip{display:inline-block;background:var(--green);color:var(--ph-black);font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px}
-.score-chip{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px}
-.score-chip.high{background:var(--green-soft);color:#1a6640}
-.score-chip.mid{background:#FFF3CD;color:#7a5a00}
-.score-chip.low{background:#fde8e8;color:#9b2626}
-
-/* ── MATRIX TABLE ── */
-.matrix-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
-.matrix-table th{background:var(--pr-navy);color:var(--white);text-align:center;padding:10px 12px;font-size:11px;font-weight:700;letter-spacing:.4px}
-.matrix-table th:first-child{text-align:left}
-.matrix-table td{padding:10px 12px;border-bottom:1px solid var(--concrete);text-align:center;vertical-align:middle}
-.matrix-table td:first-child{text-align:left;font-weight:500}
-.matrix-table tr:nth-child(even) td{background:rgba(237,240,247,.4)}
-.cell-yes{color:#1a6640;font-weight:700}
-.cell-no{color:#9b2626}
-.cell-note{color:var(--carbon);font-size:12px}
-
-/* ── COMMS CALENDAR ── */
-.comms-timeline{position:relative;margin:20px 0;padding-left:26px}
-.comms-timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--green) 0%,var(--pr-mid) 100%)}
-.ct-item{position:relative;margin-bottom:22px}
-.ct-item::before{content:'';position:absolute;left:-23px;top:5px;width:12px;height:12px;background:var(--green);border-radius:50%;border:2px solid var(--dune);box-shadow:0 0 0 2px var(--green)}
-.ct-item.internal::before{background:var(--pr-mid);box-shadow:0 0 0 2px var(--pr-mid)}
-.ct-date{font-size:10px;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px}
-.ct-item.internal .ct-date{color:var(--pr-mid)}
-.ct-title{font-size:14px;font-weight:700;color:var(--ph-black);margin-bottom:2px}
-.ct-detail{font-size:13px;color:var(--carbon);line-height:1.5}
-.ct-channel{display:inline-block;background:var(--slate);color:var(--pr-navy);font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-top:4px;letter-spacing:.3px}
-
-/* ── METRICS ── */
-.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
-.metric-card{background:var(--white);border:1px solid var(--concrete);border-radius:6px;padding:18px;border-top:3px solid var(--green)}
-.metric-card.amber{border-top-color:var(--amber)}
-.metric-card.red{border-top-color:var(--red)}
-.metric-label{font-size:10px;font-weight:700;color:var(--carbon);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px}
-.metric-target{font-size:22px;font-weight:900;color:var(--ph-black);margin-bottom:4px;line-height:1}
-.metric-desc{font-size:12px;color:var(--carbon);line-height:1.5}
-.threshold-box{background:var(--white);border:1px solid var(--concrete);border-radius:6px;overflow:hidden;margin:16px 0}
-.threshold-row{display:grid;grid-template-columns:120px 1fr 140px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--concrete);gap:12px;font-size:13px}
-.threshold-row:last-child{border-bottom:none}
-.threshold-row.header{background:var(--pr-navy);color:var(--white);font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
-
-/* ── CHECKLIST ── */
-.checklist{margin:16px 0}
-.cl-week{margin-bottom:20px}
-.cl-week-label{font-size:11px;font-weight:700;color:var(--pr-navy);text-transform:uppercase;letter-spacing:.8px;padding:6px 12px;background:var(--slate);border-radius:3px;margin-bottom:8px;display:inline-block}
-.cl-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--concrete);font-size:13px;line-height:1.55}
-.cl-item:last-child{border-bottom:none}
-.cl-box{width:16px;height:16px;border:1.5px solid var(--concrete);border-radius:3px;flex-shrink:0;margin-top:1px;background:var(--white)}
-.cl-owner{display:inline-block;background:var(--dune);color:var(--carbon);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px}
-
-/* ── CODE BLOCK ── */
-.code-block{background:var(--ph-black);border-radius:6px;padding:20px 22px;margin:16px 0;overflow-x:auto}
-.code-block code{font-family:'Courier New',monospace;font-size:12.5px;color:#a8ffcb;line-height:1.65;white-space:pre;display:block}
-.code-block .comment{color:#546e7a}
-.code-block .keyword{color:var(--green)}
-.code-block .string{color:#ffcc80}
-
-/* ── INFO GRID ── */
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
-.info-card{background:var(--white);border:1px solid var(--concrete);border-radius:4px;padding:13px 16px;border-top:3px solid var(--pr-navy)}
-.info-card.green{border-top-color:var(--green)}
-.info-key{font-size:10px;font-weight:700;color:var(--carbon);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
-.info-val{font-size:14px;font-weight:700;color:var(--ph-black)}
-.info-val small{font-size:12px;font-weight:400;color:var(--carbon)}
-
-/* ── LISTS ── */
-ul.styled{margin:10px 0 16px;padding:0;list-style:none}
-ul.styled li{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--concrete);font-size:14px;line-height:1.6;align-items:flex-start}
-ul.styled li:last-child{border-bottom:none}
-ul.styled li::before{content:'';width:7px;height:7px;background:var(--green);border-radius:50%;flex-shrink:0;margin-top:7px}
-hr{border:none;border-top:1px solid var(--concrete);margin:36px 0}
-
-/* ── FOOTER ── */
-.page-footer{margin-top:40px;padding-top:20px;border-top:2px solid var(--green);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.footer-brand{display:flex;align-items:center;gap:12px}
-.footer-ph-logo{height:16px;width:auto}
-.footer-sep{width:1px;height:18px;background:var(--concrete)}
-.footer-pr-logo{height:18px;width:auto}
-.footer-meta{font-size:11px;color:var(--carbon);text-align:right;line-height:1.5}
-
-@media(max-width:960px){.sidebar{display:none}.main{margin-left:0}.hero{padding:36px 24px 32px}.hero h1{font-size:28px}.content{padding:28px 20px 60px}.metrics-grid{grid-template-columns:1fr 1fr}}
-@media print{.sidebar,.topnav,#lock-screen{display:none}.main{margin-left:0}}
-</style>
-</head>
-<body>
-
-<!-- LOCK SCREEN -->
-<div id="lock-screen">
-  <div class="lock-icon">
-    <svg viewBox="0 0 28 28" fill="none"><rect x="5" y="12" width="18" height="14" rx="2" stroke="#28EF8F" stroke-width="1.8"/><path d="M9 12V9a5 5 0 0110 0v3" stroke="#28EF8F" stroke-width="1.8" stroke-linecap="round"/><circle cx="14" cy="19" r="2" fill="#28EF8F"/></svg>
-  </div>
-  <h2>HR Internal Access</h2>
-  <p>This page contains confidential programme materials.<br>Enter the passcode to continue.</p>
-  <div>
-    <div class="lock-form">
-      <input type="password" class="lock-input" id="lock-input" placeholder="Enter passcode" autocomplete="off" maxlength="32"/>
-      <button class="lock-btn" id="lock-btn">Unlock</button>
-    </div>
-    <div class="lock-err" id="lock-err"></div>
-  </div>
-</div>
-
-<!-- TOP NAV (hidden until unlocked) -->
-<nav class="topnav" id="main-nav" style="display:none">
-  <div class="nav-brand">
-    <svg class="nav-ph-logo" viewBox="0 0 594 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M59.6196 73.6904L36.8496 96.4604L59.6196 119.23L82.3896 96.4604L59.6196 73.6904Z" fill="#28EF8F"/>
-      <path d="M0 59.63L22.78 82.4L59.63 45.55L96.48 82.4L119.25 59.63L59.63 0L0 59.63Z" fill="#28EF8F"/>
-      <path d="M225.861 70.09H207.111V101H190.641V14.86H225.731C243.971 14.86 252.711 23.47 252.711 42.48C252.711 61.49 242.071 70.1 225.851 70.1L225.861 70.09ZM207.111 56.16H227.511C233.211 56.16 235.621 53.25 235.621 47.55V36.91C235.621 31.21 233.591 28.8 227.511 28.8H207.111V56.16Z" fill="#FFFFFF"/>
-      <path d="M280.499 14.86V45.77C284.429 38.93 290.509 34.88 299.629 34.88C314.069 34.88 320.789 43.87 320.789 58.7V101.01H304.959V59.84C304.959 52.24 302.049 47.81 294.449 47.81C285.709 47.81 280.519 54.27 280.519 63.64V101.01H264.689V14.86H280.519H280.499Z" fill="#FFFFFF"/>
-      <path d="M353.051 101H337.221V36.39H353.051V101ZM353.311 14.86V28.92H336.971V14.86H353.311Z" fill="#FFFFFF"/>
-      <path d="M392.61 48.68V88.71H408.7V101H376.78V48.68H363.98V36.39H376.78V14.86H392.61V36.4H408.7V48.69H392.61V48.68Z" fill="#FFFFFF"/>
-      <path d="M460.36 101V91.63C456.43 98.6 450.48 102.52 441.36 102.52C427.55 102.52 420.59 93.65 420.59 78.7V36.39H436.42V77.56C436.42 85.03 439.08 89.59 446.55 89.59C455.04 89.59 460.36 83.13 460.36 73.76V36.39H476.19V101H460.36Z" fill="#FFFFFF"/>
-      <path d="M493.16 101V36.39H529.26V48.8H508.99V100.99H493.16V101Z" fill="#FFFFFF"/>
-      <path d="M551.8 59.2V61.48H577.14V59.2C577.14 52.23 571.69 47.17 564.47 47.17C557.25 47.17 551.8 52.24 551.8 59.2ZM535.33 68.57C535.33 48.3 546.99 34.87 564.47 34.87C581.95 34.87 593.35 48.04 593.35 65.78V73.76H551.8V78.07C551.8 85.8 557.75 90.23 564.59 90.23C571.43 90.23 576.24 86.43 577 79.84H592.84C590.81 94.15 580.04 102.51 564.46 102.51C546.09 102.51 535.32 88.83 535.32 68.56L535.33 68.57Z" fill="#FFFFFF"/>
-    </svg>
-    <div class="nav-sep"></div>
-    <svg class="nav-pr-logo" viewBox="220 438 640 204" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M222 640V489.906H243.973V503.872C253.128 493.112 265.716 487.847 280.365 487.847C312.179 487.847 337.814 512.571 337.814 544.851C337.814 576.672 312.638 601.626 280.365 601.626C265.718 601.626 253.128 596.589 243.973 585.83V640H222ZM280.136 581.02C300.735 581.02 316.069 565.224 316.069 544.849C316.069 524.703 300.734 508.678 280.363 508.678C259.992 508.678 244.657 524.703 244.657 544.849C244.659 564.538 259.079 581.02 280.136 581.02Z" fill="#FFFFFF"/>
-      <path d="M488.56 581.707C500.461 581.707 512.135 576.442 519.001 566.827L534.565 578.731C524.494 592.925 507.328 601.625 488.56 601.625C456.973 601.625 431.568 576.9 431.568 544.849C431.568 514.401 454.685 487.845 487.186 487.845C519.456 487.845 542.805 514.172 542.805 544.62C542.788 547.145 542.635 549.667 542.346 552.175H453.311C456.285 568.887 470.018 581.707 488.56 581.707ZM487.414 507.991C470.476 507.991 457.887 519.438 453.996 534.776H520.372C517.853 519.667 504.579 507.991 487.414 507.991Z" fill="#FFFFFF"/>
-      <path d="M614.47 601.625C583.113 601.625 557.478 576.213 557.478 544.849C557.478 513.714 582.655 487.845 614.47 487.845C624.16 487.852 633.691 490.312 642.176 494.995C650.66 499.678 657.821 506.433 662.993 514.63L644.453 525.161C641.248 520.11 636.82 515.95 631.578 513.068C626.336 510.187 620.451 508.677 614.47 508.678C594.557 508.678 579.221 525.619 579.221 545.078C579.221 564.537 594.785 581.018 614.927 581.018C621.023 581.045 627.021 579.474 632.321 576.461C637.622 573.449 642.041 569.1 645.139 563.848L663.45 574.609C633.889 599.19 614.47 601.625Z" fill="#FFFFFF"/>
-      <path d="M828.246 585.209C828.246 576.739 834.886 570.56 843.123 570.56C851.592 570.56 858 576.741 858 585.209C858 593.677 851.592 600.09 843.123 600.09C841.163 600.113 839.218 599.744 837.402 599.004C835.587 598.265 833.938 597.17 832.551 595.783C831.165 594.397 830.07 592.747 829.331 590.931C828.592 589.115 828.223 587.17 828.246 585.209Z" fill="#00DC41"/>
-      <path d="M679.253 454.65C679.253 446.179 685.893 440 694.131 440C702.6 440 709.008 446.181 709.008 454.65C709.008 463.118 702.6 469.53 694.131 469.53C692.171 469.553 690.226 469.184 688.41 468.445C686.595 467.705 684.945 466.61 683.559 465.224C682.173 463.837 681.078 462.187 680.339 460.372C679.599 458.556 679.23 456.61 679.253 454.65Z" fill="#FFFFFF"/>
-      <path d="M705.345 489.906H683.144V598.648H705.345V489.906Z" fill="#FFFFFF"/>
-      <path d="M769.628 581.707C781.301 581.707 787.71 576.671 787.71 569.345C787.71 547.826 731.175 561.103 731.175 521.956C731.175 502.039 745.824 487.845 768.482 487.845C777.638 487.845 792.973 490.134 805.333 500.208L793.66 516.462C786.462 511.047 777.719 508.078 768.712 507.991C757.728 507.991 752.919 513.485 752.919 519.438C752.919 540.042 809.224 528.824 809.224 567.972C809.224 588.804 793.432 601.625 768.942 601.625C752.691 601.625 738.5 595.902 727.285 587.431L739.187 570.489C750.173 579.418 761.846 581.707 769.628 581.707Z" fill="#FFFFFF"/>
-      <path d="M379.932 504.679V489.906H357.963V598.648H379.932V540.63C379.932 514.359 399.379 504.086 420.385 511.771L424.368 490.255C406.506 483.609 387.778 491.573 379.932 504.679Z" fill="#FFFFFF"/>
-    </svg>
-  </div>
-  <div class="nav-links">
-    <a href="index.html">Overview</a>
-    <a href="apply.html" class="nav-apply">Apply now</a>
-    <a href="hr.html" class="active">HR internal <span class="nav-badge">Private</span></a>
-  </div>
-</nav>
-
-<!-- MAIN CONTENT (hidden until unlocked) -->
-<div class="page-body" id="main-content" style="display:none">
-
-<!-- SIDEBAR -->
-<aside class="sidebar">
-  <div class="sidebar-label">HR Internal</div>
-  <nav>
-    <a href="#scoring"><span class="num">1</span>Application scoring</a>
-    <a href="#matching"><span class="num">2</span>Matching logic</a>
-    <a href="#comms"><span class="num">3</span>Comms plan</a>
-    <a href="#metrics"><span class="num">4</span>Success metrics</a>
-    <a href="#checklist"><span class="num">5</span>Coordinator checklist</a>
-    <a href="#setup"><span class="num">6</span>Tech setup</a>
-  </nav>
-  <div class="sidebar-footer">HR Internal · Bridge 2026<br>Passcode protected</div>
-</aside>
-
-<main class="main">
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-tag">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="1.5" stroke="#ff8a80" stroke-width="1.2"/><path d="M4 6h4M6 4v4" stroke="#ff8a80" stroke-width="1.2" stroke-linecap="round"/></svg>
-        HR Internal · Confidential
-      </div>
-      <h1>Bridge Program<br><span>Coordinator Guide</span></h1>
-      <p class="hero-sub">Scoring criteria, matching logic, communications plan, success metrics, and the coordinator week-by-week checklist. Do not share this URL with participants.</p>
-    </div>
-  </div>
-
-  <div class="content">
-
-    <!-- ───────────────────────────────────────── -->
-    <!-- SECTION 1: SCORING -->
-    <!-- ───────────────────────────────────────── -->
-    <section class="section" id="scoring">
-      <div class="section-header">
-        <div class="section-num">1</div>
-        <h2>Application scoring criteria</h2>
-      </div>
-
-      <p>Each application is scored out of <strong>100 points</strong> across five criteria. Score responses after the window closes (30 May) and before the matching meeting (7 June). Two reviewers score independently and average their scores.</p>
-
-      <div class="callout navy">
-        <div class="callout-bar"></div>
-        <div class="callout-body">
-          <strong>Key principle</strong>
-          Score based on specificity and self-awareness, not on seniority or writing polish. A mid-level employee who clearly names a skill gap scores higher than a senior person who is vague.
-        </div>
-      </div>
-
-      <table class="score-table">
-        <thead>
-          <tr>
-            <th style="width:32%">Criterion</th>
-            <th style="width:8%">Weight</th>
-            <th style="width:30%">What strong looks like (4–5 pts)</th>
-            <th style="width:30%">What weak looks like (1–2 pts)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Skill specificity (Q1)</strong><br><span style="color:var(--carbon);font-size:12px">Can they teach something real and named?</span></td>
-            <td><span class="weight-chip">30 pts</span></td>
-            <td>Names a distinct, practiced skill with a concrete recent example. Not a job title, a specific method or capability.</td>
-            <td>"Communication", "strategy", or a job title. No example of actual use in the past 6 months.</td>
-          </tr>
-          <tr>
-            <td><strong>Learning urgency (Q3)</strong><br><span style="color:var(--carbon);font-size:12px">Is their gap real and currently unmet?</span></td>
-            <td><span class="weight-chip">25 pts</span></td>
-            <td>Describes a specific gap they cannot fill internally. Explains why their current team doesn't cover this.</td>
-            <td>Generic aspiration ("I'd love to learn more about digital marketing"). No explanation of why it's unmet.</td>
-          </tr>
-          <tr>
-            <td><strong>Mindset and self-awareness (Q4)</strong><br><span style="color:var(--carbon);font-size:12px">Can they learn across difference?</span></td>
-            <td><span class="weight-chip">20 pts</span></td>
-            <td>Reflects honestly on what was hard, not just what worked. Shows capacity to learn from uncomfortable feedback.</td>
-            <td>A positive anecdote only. No acknowledgement of difficulty or personal blind spots.</td>
-          </tr>
-          <tr>
-            <td><strong>Integration relevance (Q6)</strong><br><span style="color:var(--carbon);font-size:12px">Will this pairing serve the integration?</span></td>
-            <td><span class="weight-chip">15 pts</span></td>
-            <td>Identifies a plausible connection between their role and the integration, even indirectly. Shows curiosity about how the other company works.</td>
-            <td>Ignores the integration angle or says "not relevant to my role" without exploring any connection.</td>
-          </tr>
-          <tr>
-            <td><strong>Commitment (Q5 + overall tone)</strong><br><span style="color:var(--carbon);font-size:12px">Will they follow through?</span></td>
-            <td><span class="weight-chip">10 pts</span></td>
-            <td>Selects 4h+ and the overall application reads as deliberate, not hasty. Answers are proportionate in length to the question.</td>
-            <td>Selects 2h minimum and answers are very short across the board, suggesting low investment.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Scoring scale per criterion</h3>
-      <div class="threshold-box">
-        <div class="threshold-row header"><div>Score</div><div>Description</div><div>Action</div></div>
-        <div class="threshold-row"><div><span class="score-chip high">5 pts</span></div><div>Exceptional. Clear, specific, self-aware.</div><div>Flag as priority match candidate</div></div>
-        <div class="threshold-row"><div><span class="score-chip high">4 pts</span></div><div>Strong. Meets the standard well.</div><div>Include in matching pool</div></div>
-        <div class="threshold-row"><div><span class="score-chip mid">3 pts</span></div><div>Adequate. Passes but could be stronger.</div><div>Include with a note</div></div>
-        <div class="threshold-row"><div><span class="score-chip mid">2 pts</span></div><div>Weak. Vague or underdeveloped.</div><div>Consider exclusion or follow-up call</div></div>
-        <div class="threshold-row"><div><span class="score-chip low">1 pt</span></div><div>Does not meet the standard.</div><div>Exclude from programme</div></div>
-      </div>
-
-      <div class="callout amber">
-        <div class="callout-bar"></div>
-        <div class="callout-body">
-          <strong>Cut-off recommendation</strong>
-          Exclude any application scoring below 60/100 total. If the pool is small (&lt;20 applicants), lower the threshold to 50/100 but flag low scorers for a brief phone conversation before confirming their place.
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────────────────────────────────── -->
-    <!-- SECTION 2: MATCHING -->
-    <!-- ───────────────────────────────────────── -->
-    <section class="section" id="matching">
-      <div class="section-header">
-        <div class="section-num">2</div>
-        <h2>Matching logic</h2>
-      </div>
-
-      <p>Matching happens in the week of 8 June. Target 12–20 pairs for the first cohort. Use the scoring sheet in Google Sheets combined with the matching rules below. The coordinator makes final decisions, not an algorithm.</p>
-
-      <h3>Matching rules (apply in this order)</h3>
-      <ul class="styled">
-        <li><strong>Rule 1, Non-negotiable: cross-company pairing.</strong> Every pair must be one Phiture person and one Precis person. No same-company pairs.</li>
-        <li><strong>Rule 2: Skill complementarity.</strong> Person A's Q1 (teach) should match Person B's Q3 (learn), and vice versa. This is the primary matching signal. A partial match on one direction is acceptable; a zero match on both is not.</li>
-        <li><strong>Rule 3: Avoid same seniority deadlock.</strong> The programme works better when there is a slight asymmetry. Two people who both teach the same depth may not challenge each other enough. Prefer pairing people whose skills are in different domains, even if seniority is similar.</li>
-        <li><strong>Rule 4: Avoid functional silos.</strong> Do not pair two people from identical functions (e.g. both ASO leads). The point is cross-pollination. Same function can work only if their named skills are genuinely different.</li>
-        <li><strong>Rule 5: Commitment match.</strong> If one person selected 2h and the other 5h+, flag the pair. A significant mismatch in commitment creates tension. Try to match within one band.</li>
-        <li><strong>Rule 6: Time zone proximity.</strong> Where possible, pair people within 3 hours of each other. Bridge pairs that span large time zones have lower completion rates. Note any cross-zone pairings for the kickoff comms.</li>
-      </ul>
-
-      <h3>Skill complementarity matrix (use as a guide, not a rulebook)</h3>
-      <p style="font-size:13px;color:var(--carbon);margin-bottom:12px">This is a simplified guide to cross-company skill pairings that are known to generate high-value exchanges. Green = strong fit, Yellow = workable, — = avoid.</p>
-
-      <table class="matrix-table">
-        <thead>
-          <tr>
-            <th>Phiture teaches →</th>
-            <th>Precis wants to learn</th>
-            <th>Precis teaches →</th>
-            <th>Phiture wants to learn</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ASO / app store strategy</td>
-            <td><span class="cell-yes">✓ Strong</span></td>
-            <td>Paid media at scale</td>
-            <td><span class="cell-yes">✓ Strong</span></td>
-          </tr>
-          <tr>
-            <td>Mobile CRM / lifecycle</td>
-            <td><span class="cell-yes">✓ Strong</span></td>
-            <td>Cross-channel measurement</td>
-            <td><span class="cell-yes">✓ Strong</span></td>
-          </tr>
-          <tr>
-            <td>App monetisation strategy</td>
-            <td><span class="cell-yes">✓ Strong</span></td>
-            <td>Brand strategy / positioning</td>
-            <td><span class="cell-yes">✓ Strong</span></td>
-          </tr>
-          <tr>
-            <td>Retention / push analytics</td>
-            <td><span class="cell-note">~ Workable</span></td>
-            <td>Programmatic buying</td>
-            <td><span class="cell-note">~ Workable</span></td>
-          </tr>
-          <tr>
-            <td>Creative testing frameworks</td>
-            <td><span class="cell-note">~ Workable</span></td>
-            <td>SEO at scale</td>
-            <td><span class="cell-note">~ Workable</span></td>
-          </tr>
-          <tr>
-            <td>Generic project management</td>
-            <td><span class="cell-no">— Avoid</span></td>
-            <td>Generic leadership skills</td>
-            <td><span class="cell-no">— Avoid</span></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="callout navy">
-        <div class="callout-bar"></div>
-        <div class="callout-body">
-          <strong>What to do with unmatched applicants</strong>
-          Keep a waitlist. If a pair drops out in the first 4 weeks, pull from the waitlist and introduce the replacement as a "late joiner." After week 4, offer the unmatched person a place in the next cohort, with a personal note and priority consideration.
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────────────────────────────────── -->
-    <!-- SECTION 3: COMMS PLAN -->
-    <!-- ───────────────────────────────────────── -->
-    <section class="section" id="comms">
-      <div class="section-header">
-        <div class="section-num">3</div>
-        <h2>Communications plan</h2>
-      </div>
-
-      <p>All participant-facing messages go from the People team address (not a personal inbox). All HR-internal messages are on Slack in a private channel. Message drafts are in the shared Google Drive folder for each wave.</p>
-
-      <div class="info-grid">
-        <div class="info-card green">
-          <div class="info-key">Participant tone</div>
-          <div class="info-val">Warm, direct, second person <small>(you/your)</small></div>
-        </div>
-        <div class="info-card green">
-          <div class="info-key">HR-internal tone</div>
-          <div class="info-val">Concise, action-oriented <small>(who does what by when)</small></div>
-        </div>
-        <div class="info-card">
-          <div class="info-key">Primary channel (participants)</div>
-          <div class="info-val">Email + Slack DM</div>
-        </div>
-        <div class="info-card">
-          <div class="info-key">Primary channel (HR)</div>
-          <div class="info-val">#bridge-program-hr (private)</div>
-        </div>
-      </div>
-
-      <h3 class="accent">Full communications calendar</h3>
-
-      <div class="comms-timeline">
-
-        <div class="ct-item">
-          <div class="ct-date">1 May 2026</div>
-          <div class="ct-title">Programme announcement</div>
-          <div class="ct-detail">Send all-company email (Phiture and Precis) introducing the Bridge Program. Link to the overview page. Keep it short: one paragraph on what it is, one on who it is for, and the application open date. Avoid overselling.</div>
-          <span class="ct-channel">All-company email</span>
-          <span class="ct-channel">Slack #general</span>
-        </div>
-
-        <div class="ct-item">
-          <div class="ct-date">8 May 2026</div>
-          <div class="ct-title">Manager briefing</div>
-          <div class="ct-detail">Send a separate, short note to all people managers explaining the time commitment (roughly 3–6 hours per month) and asking them to actively encourage eligible reports to apply. Include a FAQ. This is the most important comms step for driving applications.</div>
-          <span class="ct-channel">Email to all managers</span>
-        </div>
-
-        <div class="ct-item">
-          <div class="ct-date">15 May 2026</div>
-          <div class="ct-title">Applications open</div>
-          <div class="ct-detail">Send a reminder to all staff with a direct link to apply.html. Include the deadline clearly. Post in Slack #general and pin the message for the duration of the application window.</div>
-          <span class="ct-channel">Email + Slack pin</span>
-        </div>
-
-        <div class="ct-item">
-          <div class="ct-date">25 May 2026</div>
-          <div class="ct-title">5-day reminder</div>
-          <div class="ct-detail">Short reminder to anyone who hasn't applied yet. Keep it light: "Five days left to apply. The form takes 15 minutes." No guilt, no pressure. Share one quote from a previous peer learning experience if you have one.</div>
-          <span class="ct-channel">Email</span>
-        </div>
-
-        <div class="ct-item internal">
-          <div class="ct-date">31 May – 7 June 2026</div>
-          <div class="ct-title">HR: Scoring and matching</div>
-          <div class="ct-detail">Internal only. Score all applications independently, then meet to reconcile scores and build pairs using the matching logic in Section 2. Document all decisions and rationale in the matching sheet.</div>
-          <span class="ct-channel">HR internal</span>
-        </div>
-
-        <div class="ct-item">
-          <div class="ct-date">14 June 2026</div>
-          <div class="ct-title">Results notification</div>
-          <div class="ct-detail">Send individual emails to each accepted participant. Include: who they are matched with (name, company, role), a one-sentence description of why they were paired, the kickoff date, and a link to a short "getting started" guide. Send separate emails to waitlisted and unsuccessful applicants within the same day.</div>
-          <span class="ct-channel">Individual emails</span>
-        </div>
-
-        <div class="ct-item">
-          <div class="ct-date">End of June 2026</div>
-          <div class="ct-title">Kickoff message to all pairs</div>
-          <div class="ct-detail">Group Slack message (or email) to all accepted participants welcoming them to the programme. Include: the session structure reminder, suggested tools for scheduling (e.g. Calendly), a link to the session planner template, and the People contact for questions.</div>
-          <span class="ct-channel">Slack + Email</span>
-        </div>
-
-        <div class="ct-item internal">
-          <div class="ct-date">Week 6 (mid-August 2026)</div>
-          <div class="ct-title">Mid-programme check-in</div>
-          <div class="ct-detail">Internal: HR contacts each pair individually (brief Slack DM or 15-min call). Ask: Have you had at least two sessions? Any blockers? Anything to adjust? Flag any pairs at risk of dropping out to the HRBP.</div>
-          <span class="ct-channel">HR internal</span>
-        </div>
-
-        <div class="ct-item">
-          <div class="ct-date">September 2026</div>
-          <div class="ct-title">Festival, meet your pair</div>
-          <div class="ct-detail">Send a note to all active participants before the festival reminding them their pair will be there. Provide a shared badge design or digital identifier (e.g. a Slack status or printed sticker) so they can spot each other. No structured session required.</div>
-          <span class="ct-channel">Email + Slack</span>
-        </div>
-
-        <div class="ct-item internal">
-          <div class="ct-date">End of September 2026</div>
-          <div class="ct-title">End-of-programme survey</div>
-          <div class="ct-detail">Send a 5-question pulse survey to all participants (accepted, completed, dropped). Measure: session completion rate, perceived skill gain, net promoter score for the programme, and likelihood to apply again. Results feed directly into the metrics review in Section 4.</div>
-          <span class="ct-channel">Email survey link</span>
-        </div>
-
-        <div class="ct-item internal">
-          <div class="ct-date">October 2026</div>
-          <div class="ct-title">HR: Programme retrospective</div>
-          <div class="ct-detail">Internal review meeting. Assess all metrics against targets. Decide whether to run a second cohort, expand to more pairs, or adjust the matching process. Document learnings in the Bridge Program playbook for 2027.</div>
-          <span class="ct-channel">HR internal</span>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ───────────────────────────────────────── -->
-    <!-- SECTION 4: METRICS -->
-    <!-- ───────────────────────────────────────── -->
-    <section class="section" id="metrics">
-      <div class="section-header">
-        <div class="section-num">4</div>
-        <h2>Success metrics</h2>
-      </div>
-
-      <p>These are the metrics that determine whether to continue, scale, or redesign the programme. Measure them at two points: week 6 (mid-programme check-in) and end of September (close of programme).</p>
-
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <div class="metric-label">Session completion rate</div>
-          <div class="metric-target">≥ 80%</div>
-          <div class="metric-desc">Percentage of scheduled sessions that actually happen across all pairs. Tracked via self-reported log.</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Pair retention to end</div>
-          <div class="metric-target">≥ 75%</div>
-          <div class="metric-desc">Percentage of matched pairs still active at the end of the programme (vs. dropped before session 3).</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Perceived skill gain</div>
-          <div class="metric-target">≥ 7 / 10</div>
-          <div class="metric-desc">End-of-programme survey. "On a scale of 1–10, how much did you grow the skill you identified in Q3?" Average score across all respondents.</div>
-        </div>
-        <div class="metric-card amber">
-          <div class="metric-label">Programme NPS</div>
-          <div class="metric-target">≥ +30</div>
-          <div class="metric-desc">Net Promoter Score from end survey: "How likely are you to recommend this programme to a colleague?" (0–10 scale). NPS = % Promoters minus % Detractors.</div>
-        </div>
-        <div class="metric-card amber">
-          <div class="metric-label">Application reapply rate</div>
-          <div class="metric-target">≥ 60%</div>
-          <div class="metric-desc">Percentage of participants who say they would apply again for a second cohort. Measured in end survey.</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Cross-company connections</div>
-          <div class="metric-target">Qualitative</div>
-          <div class="metric-desc">Track whether pairs continue to collaborate informally after the programme ends. Qualitative only, captured via follow-up DMs at month 3 post-programme.</div>
-        </div>
-      </div>
-
-      <h3>Decision thresholds</h3>
-      <p>Use these to frame the October retrospective decision.</p>
-
-      <div class="threshold-box">
-        <div class="threshold-row header"><div>Scenario</div><div>Signals</div><div>Recommended action</div></div>
-        <div class="threshold-row">
-          <div><span class="score-chip high">Scale</span></div>
-          <div>Session rate ≥ 80%, NPS ≥ +30, reapply ≥ 60%</div>
-          <div>Run a larger cohort (25–35 pairs) in Q1 2027. Open applications wider.</div>
-        </div>
-        <div class="threshold-row">
-          <div><span class="score-chip mid">Iterate</span></div>
-          <div>Mixed results: 2 of 3 primary metrics met</div>
-          <div>Run second cohort same size. Address the one failing metric with a specific fix (e.g. stricter matching, better kickoff, mid-check-in earlier).</div>
-        </div>
-        <div class="threshold-row">
-          <div><span class="score-chip low">Redesign</span></div>
-          <div>Fewer than 2 of 3 primary metrics met</div>
-          <div>Do not run a second cohort immediately. Conduct qualitative interviews with 5–8 participants. Redesign before relaunching.</div>
-        </div>
-      </div>
-
-      <div class="callout">
-        <div class="callout-bar"></div>
-        <div class="callout-body">
-          <strong>Important note on attribution</strong>
-          Do not over-claim. This programme is one of many integration levers. Report the metrics above honestly and avoid attributing broader integration outcomes (e.g. team sentiment or retention) directly to the Bridge Program unless you have strong evidence.
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────────────────────────────────── -->
-    <!-- SECTION 5: CHECKLIST -->
-    <!-- ───────────────────────────────────────── -->
-    <section class="section" id="checklist">
-      <div class="section-header">
-        <div class="section-num">5</div>
-        <h2>Coordinator week-by-week checklist</h2>
-      </div>
-
-      <p>One coordinator (People &amp; Culture team) owns the programme end-to-end. Estimated time commitment: 3–4 hours per week during active phases, 1 hour per week during the programme itself.</p>
-
-      <div class="checklist">
-
-        <div class="cl-week">
-          <div class="cl-week-label">April 2026 — Setup</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Create the Google Sheet with the Responses tab and correct headers (see Tech Setup)<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Deploy the Google Apps Script and paste the URL into apply.html<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Upload all three pages (index.html, apply.html, hr.html) to GitHub Pages and test all links<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Test the application form end-to-end: submit a dummy entry and confirm it appears in the Sheet<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Confirm Precis HR counterpart and agree on shared scoring responsibilities<span class="cl-owner">Coord + Precis HR</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Draft all-company announcement email and get sign-off from HRBP or CPO<span class="cl-owner">Coord</span></div></div>
-        </div>
-
-        <div class="cl-week">
-          <div class="cl-week-label">1–14 May — Announcement &amp; Manager briefing</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send all-company announcement (1 May). Track open rate if possible.<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send manager briefing (8 May) with FAQ and ask for active encouragement<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Post in Slack #general at both companies (coordinate timing with Precis)<span class="cl-owner">Coord + Precis HR</span></div></div>
-        </div>
-
-        <div class="cl-week">
-          <div class="cl-week-label">15–30 May — Application window</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send applications-open email with direct link to apply.html (15 May)<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Monitor the Sheet for incoming applications weekly. Flag any duplicate emails immediately.<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send 5-day reminder (25 May). Keep it brief.<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Close the form on 30 May by removing the submit button or replacing with a "Closed" message (edit apply.html)<span class="cl-owner">Coord</span></div></div>
-        </div>
-
-        <div class="cl-week">
-          <div class="cl-week-label">31 May – 7 June — Scoring</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Export applications from Sheet to a separate scoring tab. Remove names for blind scoring where possible.<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Both reviewers score independently using the rubric in Section 1. Do not discuss scores until both are complete.<span class="cl-owner">Coord + Precis HR</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Reconcile scores. Average and rank all applications. Agree on cut-off.<span class="cl-owner">Coord + Precis HR</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Build the proposed matching pairs using the rules in Section 2. Document rationale for each pair.<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Get matching decisions signed off by HRBP before notifying anyone<span class="cl-owner">HRBP sign-off</span></div></div>
-        </div>
-
-        <div class="cl-week">
-          <div class="cl-week-label">14 June — Notifications</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send individual acceptance emails to all accepted pairs (same day). Include match name, role, company, and kickoff date.<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send waitlist emails. Be honest: "You are on the waitlist. We will contact you within 2 weeks if a space opens."<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send unsuccessful applicant emails (same day as acceptances). Keep the tone warm. Offer feedback to anyone who requests it.<span class="cl-owner">Coord</span></div></div>
-        </div>
-
-        <div class="cl-week">
-          <div class="cl-week-label">End of June — Kickoff</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send kickoff email/Slack to all pairs. Include session structure, scheduling guidance, and People team contact.<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Set up a simple tracking tab in the Sheet to log each pair's session dates (self-reported).<span class="cl-owner">Coord</span></div></div>
-        </div>
-
-        <div class="cl-week">
-          <div class="cl-week-label">Week 6 (mid-August) — Mid-check-in</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Contact each pair individually (brief Slack DM). Ask: sessions held? Blockers? Any support needed?<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Flag any at-risk pairs to HRBP. Offer a 15-min call if a pair is stuck.<span class="cl-owner">Coord + HRBP</span></div></div>
-        </div>
-
-        <div class="cl-week">
-          <div class="cl-week-label">September — Festival &amp; Close</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send pre-festival note to participants reminding them their pair will be there. Share badge/identifier.<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send end-of-programme survey to all participants after the festival (late September).<span class="cl-owner">Coord</span></div></div>
-        </div>
-
-        <div class="cl-week">
-          <div class="cl-week-label">October — Retrospective</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Compile all metrics (survey results, session completion rates, pair retention) into the retrospective report.<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Run the retrospective meeting with HRBP and Precis HR. Use Section 4 decision thresholds.<span class="cl-owner">Coord + HRBP + Precis HR</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Update the Bridge Program playbook with learnings. Archive all materials in Drive.<span class="cl-owner">Coord</span></div></div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ───────────────────────────────────────── -->
-    <!-- SECTION 6: TECH SETUP -->
-    <!-- ───────────────────────────────────────── -->
-    <section class="section" id="setup">
-      <div class="section-header">
-        <div class="section-num">6</div>
-        <h2>Tech setup: Google Apps Script</h2>
-      </div>
-
-      <p>The application form (apply.html) posts directly to a Google Sheet via Google Apps Script. There is no backend server or database. Setup takes around 10 minutes.</p>
-
-      <div class="callout">
-        <div class="callout-bar"></div>
-        <div class="callout-body">
-          <strong>What you need</strong>
-          A Google account with access to Google Sheets and Apps Script. The Google Sheet should be in a shared People &amp; Culture Drive folder, not a personal Drive.
-        </div>
-      </div>
-
-      <h3 class="accent">Step-by-step setup</h3>
-      <ul class="styled">
-        <li><strong>Step 1.</strong> Create a new Google Sheet. Rename the default tab to <code>Responses</code>. In row 1, add these headers exactly (one per column): <em>Timestamp, Name, Email, Company, Role, Department, Q1_Skill_Teach, Q2_Skill_Teach_2, Q3_Skill_Learn, Q4_Mindset, Q5_Hours, Q6_Integration, Q7_Precis_Only</em></li>
-        <li><strong>Step 2.</strong> In the Sheet, go to <strong>Extensions → Apps Script</strong>. Delete any existing code and paste the script below.</li>
-        <li><strong>Step 3.</strong> Click <strong>Deploy → New deployment</strong>. Choose <em>Web app</em>. Set "Execute as" to <em>Me</em>. Set "Who has access" to <em>Anyone</em> (this allows the form to post without login). Click Deploy. Copy the Web App URL.</li>
-        <li><strong>Step 4.</strong> Open apply.html in a text editor. Find the line <code>const SCRIPT_URL = 'YOUR_SCRIPT_URL_HERE';</code> near the bottom and replace the placeholder with your copied URL. Save and re-upload to GitHub.</li>
-        <li><strong>Step 5.</strong> Test: fill in the form and submit. Check the Sheet — a new row should appear with your test data. If it doesn't, re-check the Web App URL and that "Anyone" access is set.</li>
-        <li><strong>Step 6.</strong> To close applications after 30 May: edit apply.html, remove the submit button, and replace it with a "Applications are now closed" message. Re-upload to GitHub.</li>
-      </ul>
-
-      <h3>Apps Script code</h3>
-
-      <div class="code-block">
-<code>// Bridge Program — Google Apps Script
-// Paste this into Extensions → Apps Script in your Google Sheet
-// Then deploy as a Web App (Execute as: Me, Access: Anyone)
-
-function doPost(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet()
-                  .getSheetByName('Responses');
-
-  const data = JSON.parse(e.postData.contents);
-
-  sheet.appendRow([
-    new Date(),            // Timestamp
-    data.name,             // Full name
-    data.email,            // Work email
-    data.company,          // Phiture or Precis
-    data.role,             // Job title
-    data.department || '', // Department (optional)
-    data.q1,               // Skill to teach (primary)
-    data.q2 || '',         // Skill to teach (secondary, optional)
-    data.q3,               // Skill to learn
-    data.q4,               // Mindset / cross-difference example
-    data.q5,               // Hours per month commitment
-    data.q6,               // Integration context
-    data.q7 || ''          // Precis-only question (blank for Phiture)
-  ]);
-
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: 'ok' }))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
-// Optional: add this function to test the sheet connection
-function testWrite() {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet()
-                  .getSheetByName('Responses');
-  sheet.appendRow(['TEST', 'Test User', 'test@test.com',
-    'Phiture', 'Tester', '', 'Test Q1', '', 'Test Q3',
-    'Test Q4', '4h', 'Test Q6', '']);
-  Logger.log('Test row written successfully');
-}</code>
-      </div>
-
-      <div class="callout amber">
-        <div class="callout-bar"></div>
-        <div class="callout-body">
-          <strong>GDPR note</strong>
-          Application data includes names, emails, and personal reflections. Restrict access to the Google Sheet to the People team only. Do not share the raw Sheet with hiring managers or anyone outside the programme coordination team. Retain data only for the duration of the programme plus 6 months, then delete responses.
-        </div>
-      </div>
-
-      <h3>Troubleshooting</h3>
-      <ul class="styled">
-        <li><strong>Form submits but no data in the Sheet.</strong> Check that "Who has access" is set to "Anyone" (not "Anyone with Google account"). Re-deploy as a new version after changing this setting.</li>
-        <li><strong>CORS error in browser console.</strong> Google Apps Script handles CORS automatically for POST requests. If you see a CORS error, check that you are posting to the correct Web App URL (not the editor URL).</li>
-        <li><strong>Sheet tab not found error.</strong> Make sure the tab is named exactly "Responses" with a capital R. Apps Script is case-sensitive.</li>
-        <li><strong>Form shows "Something went wrong."</strong> The Apps Script may have hit the Google quota limit (rare for small volumes). Wait 30 minutes and try again, or contact Google Workspace support.</li>
-      </ul>
-    </section>
-
-    <!-- FOOTER -->
-    <div class="page-footer">
-      <div class="footer-brand">
-        <svg class="footer-ph-logo" viewBox="0 0 594 110" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M59.6196 73.69L36.8496 96.46L59.6196 119.23L82.3896 96.46L59.6196 73.69Z" fill="#28EF8F"/><path d="M0 59.63L22.78 82.4L59.63 45.55L96.48 82.4L119.25 59.63L59.63 0L0 59.63Z" fill="#28EF8F"/><path d="M207.111 14.86H225.731C243.971 14.86 252.711 23.47 252.711 42.48C252.711 61.49 242.071 70.1 225.851 70.1H207.111V101H190.641V14.86ZM207.111 56.16H227.511C233.211 56.16 235.621 53.25 235.621 47.55V36.91C235.621 31.21 233.591 28.8 227.511 28.8H207.111V56.16Z" fill="#272525"/><path d="M280.499 14.86V45.77C284.429 38.93 290.509 34.88 299.629 34.88C314.069 34.88 320.789 43.87 320.789 58.7V101H304.959V59.84C304.959 52.24 302.049 47.81 294.449 47.81C285.709 47.81 280.519 54.27 280.519 63.64V101H264.689V14.86H280.499Z" fill="#272525"/><path d="M353.051 101H337.221V36.39H353.051V101ZM353.311 14.86V28.92H336.971V14.86H353.311Z" fill="#272525"/><path d="M376.78 14.86H392.61V36.4H408.7V48.69H392.61V88.71H408.7V101H376.78V48.68H363.98V36.39H376.78V14.86Z" fill="#272525"/><path d="M460.36 101V91.63C456.43 98.6 450.48 102.52 441.36 102.52C427.55 102.52 420.59 93.65 420.59 78.7V36.39H436.42V77.56C436.42 85.03 439.08 89.59 446.55 89.59C455.04 89.59 460.36 83.13 460.36 73.76V36.39H476.19V101H460.36Z" fill="#272525"/><path d="M493.16 101V36.39H529.26V48.8H508.99V101H493.16Z" fill="#272525"/><path d="M564.47 34.87C546.99 34.87 535.33 48.3 535.33 68.57C535.33 88.83 546.09 102.51 564.46 102.51C580.04 102.51 590.81 94.15 592.84 79.84H577C576.24 86.43 571.43 90.23 564.59 90.23C557.75 90.23 551.8 85.8 551.8 78.07V73.76H593.35V65.78C593.35 48.04 581.95 34.87 564.47 34.87ZM551.8 61.48V59.2C551.8 52.24 557.25 47.17 564.47 47.17C571.69 47.17 577.14 52.23 577.14 59.2V61.48H551.8Z" fill="#272525"/></svg>
-        <div class="footer-sep"></div>
-        <svg class="footer-pr-logo" viewBox="220 438 640 204" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M222 640V489.906H243.973V503.872C253.128 493.112 265.716 487.847 280.365 487.847C312.179 487.847 337.814 512.571 337.814 544.851C337.814 576.672 312.638 601.626 280.365 601.626C265.718 601.626 253.128 596.589 243.973 585.83V640H222ZM280.136 581.02C300.735 581.02 316.069 565.224 316.069 544.849C316.069 524.703 300.734 508.678 280.363 508.678C259.992 508.678 244.657 524.703 244.657 544.849C244.659 564.538 259.079 581.02 280.136 581.02Z" fill="#646464"/><path d="M488.56 581.707C500.461 581.707 512.135 576.442 519.001 566.827L534.565 578.731C524.494 592.925 507.328 601.625 488.56 601.625C456.973 601.625 431.568 576.9 431.568 544.849C431.568 514.401 454.685 487.845 487.186 487.845C519.456 487.845 542.805 514.172 542.805 544.62C542.788 547.145 542.635 549.667 542.346 552.175H453.311C456.285 568.887 470.018 581.707 488.56 581.707ZM487.414 507.991C470.476 507.991 457.887 519.438 453.996 534.776H520.372C517.853 519.667 504.579 507.991 487.414 507.991Z" fill="#646464"/><path d="M614.47 601.625C583.113 601.625 557.478 576.213 557.478 544.849C557.478 513.714 582.655 487.845 614.47 487.845C624.16 487.852 633.691 490.312 642.176 494.995C650.66 499.678 657.821 506.433 662.993 514.63L644.453 525.161C641.248 520.11 636.82 515.95 631.578 513.068C626.336 510.187 620.451 508.677 614.47 508.678C594.557 508.678 579.221 525.619 579.221 545.078C579.221 564.537 594.785 581.018 614.927 581.018C621.023 581.045 627.021 579.474 632.321 576.461C637.622 573.449 642.041 569.1 645.139 563.848L663.45 574.609C658.253 582.903 651.028 589.736 642.459 594.463C633.889 599.19 624.256 601.654 614.47 601.625Z" fill="#646464"/><path d="M828.246 585.209C828.246 576.739 834.886 570.56 843.123 570.56C851.592 570.56 858 576.741 858 585.209C858 593.677 851.592 600.09 843.123 600.09C841.163 600.113 839.218 599.744 837.402 599.004C835.587 598.265 833.938 597.17 832.551 595.783C831.165 594.397 830.07 592.747 829.331 590.931C828.592 589.115 828.223 587.17 828.246 585.209Z" fill="#00DC41"/><path d="M705.345 489.906H683.144V598.648H705.345V489.906Z" fill="#646464"/><path d="M769.628 581.707C781.301 581.707 787.71 576.671 787.71 569.345C787.71 547.826 731.175 561.103 731.175 521.956C731.175 502.039 745.824 487.845 768.482 487.845C777.638 487.845 792.973 490.134 805.333 500.208L793.66 516.462C786.462 511.047 777.719 508.078 768.712 507.991C757.728 507.991 752.919 513.485 752.919 519.438C752.919 540.042 809.224 528.824 809.224 567.972C809.224 588.804 793.432 601.625 768.942 601.625C752.691 601.625 738.5 595.902 727.285 587.431L739.187 570.489C750.173 579.418 761.846 581.707 769.628 581.707Z" fill="#646464"/><path d="M379.932 504.679V489.906H357.963V598.648H379.932V540.63C379.932 514.359 399.379 504.086 420.385 511.771L424.368 490.255C406.506 483.609 387.778 491.573 379.932 504.679Z" fill="#646464"/></svg>
-      </div>
-      <div class="footer-meta">HR Internal · Bridge Program 2026<br>Confidential, do not distribute</div>
-    </div>
-
-  </div>
-</main>
-</div>
-
-<script>
-// ── PASSCODE ──
-const PASSCODE = 'bridge2026';
-
-function unlock(){
-  const input=document.getElementById('lock-input');
-  if(input.value.trim()===PASSCODE){
-    document.getElementById('lock-screen').classList.add('hidden');
-    document.getElementById('main-nav').style.display='flex';
-    document.getElementById('main-content').style.display='flex';
-    sessionStorage.setItem('bridge_unlocked','1');
-    setTimeout(function(){initScrollSpy()},100);
-  } else {
-    const errEl=document.getElementById('lock-err');
-    errEl.textContent='Incorrect passcode. Please try again.';
-    input.classList.add('shake');
-    input.value='';
-    setTimeout(function(){input.classList.remove('shake');errEl.textContent=''},2000);
-  }
-}
-
-// Check session storage (so reload doesn't re-lock)
-if(sessionStorage.getItem('bridge_unlocked')==='1'){
-  document.getElementById('lock-screen').classList.add('hidden');
-  document.getElementById('main-nav').style.display='flex';
-  document.getElementById('main-content').style.display='flex';
+// Local file previews in the app should open directly without blocking on the passcode UI.
+if(window.location.protocol==='file:'){
+  showHrContent();
 }
 
 document.getElementById('lock-btn').addEventListener('click',unlock);
