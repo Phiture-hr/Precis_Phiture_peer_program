@@ -143,6 +143,24 @@ p{margin-bottom:14px;line-height:1.7}
 .cl-item:last-child{border-bottom:none}
 .cl-box{width:16px;height:16px;border:1.5px solid var(--concrete);border-radius:3px;flex-shrink:0;margin-top:1px;background:var(--white)}
 .cl-owner{display:inline-block;background:var(--dune);color:var(--carbon);font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:6px}
+.cl-item.done .cl-box{background:var(--green);border-color:var(--green);display:flex;align-items:center;justify-content:center}
+.cl-item.done .cl-box::after{content:'✓';font-size:10px;color:var(--ph-black);font-weight:900;line-height:1}
+.cl-item.done > div:last-child{color:rgba(100,100,100,.55);text-decoration:line-through;text-decoration-color:rgba(100,100,100,.3)}
+.cl-week-label.done-week{background:rgba(40,239,143,.12);color:#1a6640}
+.ct-badge{display:inline-block;font-size:10px;font-weight:700;padding:1px 8px;border-radius:10px;margin-left:8px;vertical-align:middle}
+.ct-done{background:var(--green-soft);color:#1a6640}
+.ct-today{background:var(--green);color:var(--ph-black)}
+.ct-item.past .ct-date{color:var(--carbon)}
+.ct-draft{margin-top:12px;border:1px solid var(--concrete);border-radius:4px;overflow:hidden}
+.ct-draft-hdr{background:var(--pr-light);padding:8px 14px;font-size:10px;font-weight:700;color:var(--pr-navy);letter-spacing:.8px;text-transform:uppercase;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.ct-draft-hdr:hover{background:#dde5f8}
+.ct-draft-body{padding:16px 14px;font-size:13px;line-height:1.75;border-top:1px solid var(--concrete);background:var(--white);display:none}
+.ct-draft-body.open{display:block}
+.ct-draft-body p{margin-bottom:10px;color:var(--ph-black)}
+.ct-draft-body p:last-child{margin-bottom:0}
+.ct-draft-subject{font-size:12px;font-weight:700;color:var(--pr-navy);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--concrete)}
+.ct-draft-subject span{color:var(--carbon);font-weight:400}
+.ct-draft-to{font-size:11px;color:var(--carbon);margin-bottom:14px}
 
 /* ── CODE BLOCK ── */
 .code-block{background:var(--ph-black);border-radius:6px;padding:20px 22px;margin:16px 0;overflow-x:auto}
@@ -457,26 +475,65 @@ hr{border:none;border-top:1px solid var(--concrete);margin:36px 0}
 
       <div class="comms-timeline">
 
-        <div class="ct-item">
-          <div class="ct-date">8 June 2026</div>
+        <div class="ct-item past">
+          <div class="ct-date">8 June 2026 <span class="ct-badge ct-done">Done</span></div>
           <div class="ct-title">Programme announcement</div>
-          <div class="ct-detail">Send all-company email (Phiture and Precis) introducing the Bridge Program. Link to the overview page. Keep it short: one paragraph on what it is, one on who it is for, and the application open date. Avoid overselling.</div>
+          <div class="ct-detail">All-company email (Phiture and Precis) introducing the Bridge Program with a link to the overview page.</div>
           <span class="ct-channel">All-company email</span>
           <span class="ct-channel">Slack #general</span>
         </div>
 
-        <div class="ct-item">
-          <div class="ct-date">15 June 2026</div>
+        <div class="ct-item past">
+          <div class="ct-date">15 June 2026 <span class="ct-badge ct-done">Done</span></div>
           <div class="ct-title">Manager briefing</div>
-          <div class="ct-detail">Send a separate, short note to all people managers explaining the time commitment (roughly 3–6 hours per month) and asking them to actively encourage eligible reports to apply. Include a FAQ. This is the most important comms step for driving applications.</div>
+          <div class="ct-detail">Separate note to all people managers on time commitment and ask for active encouragement of eligible reports.</div>
           <span class="ct-channel">Email to all managers</span>
         </div>
 
         <div class="ct-item">
-          <div class="ct-date">22 June 2026</div>
+          <div class="ct-date">22 June 2026 <span class="ct-badge ct-today">Today</span></div>
           <div class="ct-title">Applications open</div>
-          <div class="ct-detail">Send a reminder to all staff with a direct link to apply.html. Include the deadline clearly. Post in Slack #general and pin the message for the duration of the application window.</div>
+          <div class="ct-detail">Send to all staff with a direct link to apply.html. Post in Slack #general and pin for the duration of the application window. Two versions: one for Phiture, one for Precis (Emma introduces herself).</div>
           <span class="ct-channel">Email + Slack pin</span>
+
+          <div class="ct-draft">
+            <div class="ct-draft-hdr" onclick="toggleDraft(this)">
+              <span>Email draft — Phiture</span><span>▾</span>
+            </div>
+            <div class="ct-draft-body">
+              <div class="ct-draft-subject">Subject: <span>The Bridge Program is open — apply by 5 July</span></div>
+              <div class="ct-draft-to">To: All Phiture staff &nbsp;·&nbsp; From: emma.herrero@phiture.com &nbsp;·&nbsp; Channel: Email + Slack #general</div>
+              <p>Applications for the Bridge Program are open today.</p>
+              <p>If you haven't heard about it yet, here is the short version: 30–40 people from Phiture and Precis are going to be matched in pairs. Over 12 weeks, you and your pair will run five structured sessions — teaching each other something you are genuinely good at and learning something you actually want. The whole thing kicks off in person at the Precis Festival in Stockholm on 4 September.</p>
+              <p>The form takes about 15–20 minutes. The deadline is 5 July. You will hear back by 17 July.</p>
+              <p><strong>Apply here:</strong> [link to apply.html]</p>
+              <p>A few things worth knowing before you fill it in: the matching is based on your answers, so the more specific you are about what you can teach and what you want to learn, the better the match. Generic answers lead to weak pairings. Read through the questions before you start — it helps to have thought about your answers in advance.</p>
+              <p>You need your manager's awareness, but not formal approval. Just let them know. This is open to people who have been in their current role for at least 6 months and are not planning extended leave between September and November.</p>
+              <p>Questions before applying? Reach out to me or the People team.</p>
+              <p>Emma<br>People &amp; Culture</p>
+            </div>
+          </div>
+
+          <div class="ct-draft" style="margin-top:8px">
+            <div class="ct-draft-hdr" onclick="toggleDraft(this)">
+              <span>Email draft — Precis</span><span>▾</span>
+            </div>
+            <div class="ct-draft-body">
+              <div class="ct-draft-subject">Subject: <span>The Bridge Program — applications open today (Phiture × Precis)</span></div>
+              <div class="ct-draft-to">To: All Precis staff (via Emelie Thun / Karin) &nbsp;·&nbsp; From: emma.herrero@phiture.com</div>
+              <p>Hi everyone,</p>
+              <p>I'm Emma Herrero, Director of People and Culture at Phiture. I've been working with Emelie and Brixen over the past few months to put together something I think is worth your time — and applications are open from today.</p>
+              <p>It's called the Bridge Program. The idea is simple: we take 30–40 people across Phiture and Precis, match them in pairs, and give each pair a structured 12-week exchange. You teach your pair one thing you are genuinely good at. They teach you one thing you actually want to learn. Five sessions, roughly two hours a month, and you meet your pair in person at the Precis Festival in Stockholm on 4 September.</p>
+              <p>This is not mentoring and it's not networking. Every session has a learning goal set in advance. Both people prepare, both people get something concrete out of it.</p>
+              <p>The form takes about 15 minutes. Applications close on 5 July and you will hear back by 17 July.</p>
+              <p><strong>Apply here:</strong> [link to apply.html]</p>
+              <p>Before you fill it in, it helps to read through the questions first — the most important ones ask you to name one specific skill you can teach and one specific gap you want to close. The more precise your answers, the better the match we can make for you.</p>
+              <p>For Precis applicants, we are looking for people at Manager level or above, or specialists with 3 or more years in their domain, working in a function with some overlap with Phiture: Performance Marketing, Data, Strategy, Creative, Product, or People.</p>
+              <p>Questions about whether this is right for you? Reach out to me at emma.herrero@phiture.com or to Emelie on the Precis side.</p>
+              <p>Looking forward to meeting some of you in Stockholm.</p>
+              <p>Emma Herrero<br>Director of People and Culture, Phiture<br>emma.herrero@phiture.com</p>
+            </div>
+          </div>
         </div>
 
         <div class="ct-item">
@@ -627,24 +684,24 @@ hr{border:none;border-top:1px solid var(--concrete);margin:36px 0}
       <div class="checklist">
 
         <div class="cl-week">
-          <div class="cl-week-label">May 2026 — Setup</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Confirm the live form-to-sheet connection is still working after any content changes to apply.html<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Upload all three pages (index.html, apply.html, hr.html) to GitHub Pages and test all links<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Test the application form end-to-end: submit a dummy entry and confirm it appears in the Sheet<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Confirm Precis HR counterpart and agree on shared scoring responsibilities<span class="cl-owner">Coord + Precis HR</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Draft all-company announcement email and get sign-off from HRBP or CPO<span class="cl-owner">Coord</span></div></div>
+          <div class="cl-week-label done-week">May 2026 — Setup ✓</div>
+          <div class="cl-item done"><div class="cl-box"></div><div>Confirm the live form-to-sheet connection is still working after any content changes to apply.html<span class="cl-owner">Coord</span></div></div>
+          <div class="cl-item done"><div class="cl-box"></div><div>Upload all three pages (index.html, apply.html, hr.html) to GitHub Pages and test all links<span class="cl-owner">Coord</span></div></div>
+          <div class="cl-item done"><div class="cl-box"></div><div>Test the application form end-to-end: submit a dummy entry and confirm it appears in the Sheet<span class="cl-owner">Coord</span></div></div>
+          <div class="cl-item done"><div class="cl-box"></div><div>Confirm Precis HR counterpart and agree on shared scoring responsibilities<span class="cl-owner">Coord + Precis HR</span></div></div>
+          <div class="cl-item done"><div class="cl-box"></div><div>Draft all-company announcement email and get sign-off from HRBP or CPO<span class="cl-owner">Coord</span></div></div>
         </div>
 
         <div class="cl-week">
-          <div class="cl-week-label">8–21 June — Announcement &amp; Manager briefing</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send all-company announcement (8 June). Track open rate if possible.<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send manager briefing (15 June) with FAQ and ask for active encouragement<span class="cl-owner">Coord</span></div></div>
-          <div class="cl-item"><div class="cl-box"></div><div>Post in Slack #general at both companies (coordinate timing with Precis)<span class="cl-owner">Coord + Precis HR</span></div></div>
+          <div class="cl-week-label done-week">8–21 June — Announcement &amp; Manager briefing ✓</div>
+          <div class="cl-item done"><div class="cl-box"></div><div>Send all-company announcement (8 June). Track open rate if possible.<span class="cl-owner">Coord</span></div></div>
+          <div class="cl-item done"><div class="cl-box"></div><div>Send manager briefing (15 June) with FAQ and ask for active encouragement<span class="cl-owner">Coord</span></div></div>
+          <div class="cl-item done"><div class="cl-box"></div><div>Post in Slack #general at both companies (coordinate timing with Precis)<span class="cl-owner">Coord + Precis HR</span></div></div>
         </div>
 
         <div class="cl-week">
           <div class="cl-week-label">22 June – 5 July — Application window</div>
-          <div class="cl-item"><div class="cl-box"></div><div>Send applications-open email with direct link to apply.html (22 June)<span class="cl-owner">Coord</span></div></div>
+          <div class="cl-item done"><div class="cl-box"></div><div>Send applications-open email with direct link to apply.html (22 June) — see email drafts in Section 3 above<span class="cl-owner">Coord</span></div></div>
           <div class="cl-item"><div class="cl-box"></div><div>Monitor the Sheet for incoming applications weekly. Flag any duplicate emails immediately.<span class="cl-owner">Coord</span></div></div>
           <div class="cl-item"><div class="cl-box"></div><div>Send 5-day reminder (30 June). Keep it brief.<span class="cl-owner">Coord</span></div></div>
           <div class="cl-item"><div class="cl-box"></div><div>Close the form on 5 July by removing the submit button or replacing with a "Closed" message (edit apply.html)<span class="cl-owner">Coord</span></div></div>
@@ -758,6 +815,14 @@ hr{border:none;border-top:1px solid var(--concrete);margin:36px 0}
 </div>
 
 <script>
+// ── EMAIL DRAFT TOGGLE ──
+function toggleDraft(hdr){
+  const body=hdr.nextElementSibling;
+  const arrow=hdr.querySelector('span:last-child');
+  body.classList.toggle('open');
+  arrow.textContent=body.classList.contains('open')?'▴':'▾';
+}
+
 // ── PASSCODE ──
 const PASSCODE = 'bridge2026';
 
